@@ -2,168 +2,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Patience Agyiri Andoh</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #B795F4;
-      --light: #ffffff;
+      --primary: #b88be1;
+      --text: #333;
     }
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: var(--light);
-      color: #333;
-      overflow-x: hidden;
+      background: #fff url('cancer_symbol_light.png') no-repeat center;
+      background-size: 400px auto;
+      color: var(--text);
     }
-    header {
+    .slideshow-container {
       position: relative;
       height: 90vh;
       overflow: hidden;
     }
-    .slider {
-      height: 100%;
-      width: 100%;
+    .slideshow-container img {
       position: absolute;
-      animation: fade 18s infinite;
-    }
-    .slider img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      position: absolute;
       opacity: 0;
-      animation: slideFade 18s infinite;
+      animation: fadeSlideshow 18s infinite;
     }
-    .slider img:nth-child(1) { animation-delay: 0s; }
-    .slider img:nth-child(2) { animation-delay: 6s; }
-    .slider img:nth-child(3) { animation-delay: 12s; }
+    .slideshow-container img:nth-child(1) { animation-delay: 0s; }
+    .slideshow-container img:nth-child(2) { animation-delay: 6s; }
+    .slideshow-container img:nth-child(3) { animation-delay: 12s; }
 
-    @keyframes slideFade {
+    @keyframes fadeSlideshow {
       0%, 100% { opacity: 0; }
       10%, 30% { opacity: 1; }
       40%, 90% { opacity: 0; }
     }
 
-    .hero-text {
-      position: relative;
-      z-index: 2;
+    .slideshow-footer {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
       text-align: center;
-      top: 30%;
+      background: rgba(0,0,0,0.5);
       color: white;
-      padding: 2em;
-      background: rgba(0,0,0,0.4);
-      margin: 0 auto;
+      font-size: 1.2em;
+      padding: 1em;
+      z-index: 2;
+    }
+
+    .mini-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1em;
+      margin: 2em auto;
+      max-width: 800px;
+    }
+    .mini-tabs a {
+      text-decoration: none;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      padding: 0.7em 1.5em;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    .mini-tabs a:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .about {
+      text-align: center;
       max-width: 700px;
+      margin: 3em auto;
+      padding: 1em;
+      background: rgba(255, 255, 255, 0.9);
       border-radius: 10px;
     }
-    nav {
-      background: var(--primary);
-      padding: 1em;
-      text-align: center;
-    }
-    nav button {
-      background: white;
-      color: var(--primary);
-      font-weight: bold;
-      padding: 0.7em 1.2em;
-      margin: 0 0.5em;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    nav button:hover {
-      background: #e9d7ff;
-    }
-    .tab-content {
-      display: none;
-      padding: 2em;
-      max-width: 900px;
-      margin: auto;
-      animation: fadeIn 0.6s ease-in;
-    }
-    .tab-content.active {
-      display: block;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+
     footer {
-      background: var(--primary);
+      background-color: var(--primary);
       color: white;
       text-align: center;
       padding: 1.5em 1em;
+      margin-top: 3em;
     }
-    .icons a {
+    .footer-icons a {
       color: white;
       margin: 0 10px;
-      font-size: 1.3em;
+      font-size: 1.4em;
       text-decoration: none;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="slider">
-      <img src="slide1.jpg" alt="Photo 1">
-      <img src="slide2.jpg" alt="Photo 2">
-      <img src="slide3.jpg" alt="Photo 3">
+  <div class="slideshow-container">
+    <img src="slide1.jpg" alt="Slide 1">
+    <img src="slide2.jpg" alt="Slide 2">
+    <img src="slide3.jpg" alt="Slide 3">
+    <div class="slideshow-footer">
+      Hope through science, healing through education and empowering others in the fight against cancer.
     </div>
-    <div class="hero-text">
-      <h1>Patience Agyiri Andoh</h1>
-      <p>Hope through science, healing through education. Empowering others in the fight against cancer.</p>
-    </div>
-  </header>
-
-  <nav>
-    <button onclick="showTab('education')">Education</button>
-    <button onclick="showTab('research')">Research</button>
-    <button onclick="showTab('work')">Work</button>
-    <button onclick="showTab('community')">Community Service</button>
-  </nav>
-
-  <div id="education" class="tab-content active">
-    <h2>Education</h2>
-    <p>BSc. Biological Sciences at Kwame Nkrumah University of Science and Technology (KNUST), Kumasi – Ghana.<br>
-    Academic honors in Biochemistry, Immunology, and Microbiology.</p>
   </div>
 
-  <div id="research" class="tab-content">
-    <h2>Research</h2>
-    <p>Capstone project on mercury exposure among gold miners. Studies in microbial diversity and cancer biology.<br>
-    Founder of the Cancer Biology Series initiative for student-led education and outreach.</p>
+  <div class="mini-tabs">
+    <a href="education.html">Education</a>
+    <a href="research.html">Research</a>
+    <a href="work.html">Work</a>
+    <a href="cancer.html">Cancer Biology Series</a>
+    <a href="community.html">Community Service</a>
   </div>
 
-  <div id="work" class="tab-content">
-    <h2>Work</h2>
-    <p>Intern at Holy Trinity Medical Center and Kinapharma Ltd. Experience in hematology, CBC, and pharmaceutical analysis.</p>
-  </div>
-
-  <div id="community" class="tab-content">
-    <h2>Community Service</h2>
-    <p>Secretary of KNUST Debate Society. Mentorship and outreach through the Cancer Biology Series.<br>
-    Leadership roles in student committees and science education efforts.</p>
+  <div class="about">
+    <h2>About Patience</h2>
+    <p>I am Patience Maame Efua Agiri Andoh, a senior at KNUST studying Biological Sciences. Passionate about cancer biology and science education, I lead initiatives like the Cancer Biology Series to inspire and empower my community. I also enjoy reading, debating, and exploring how biology can improve lives across Africa.</p>
   </div>
 
   <footer>
-    <p>Patience Agyiri Andoh &mdash; All Rights Reserved</p>
-    <div class="icons">
-      <a href="mailto:patienceandoh300@gmail.com"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.linkedin.com/in/patienceagyiriandoh/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <p>&copy; 2025 Patience Agyiri Andoh</p>
+    <div class="footer-icons">
+      <a href="mailto:patienceandoh300@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/patienceagyiriandoh/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
     </div>
   </footer>
-
-  <script>
-    function showTab(id) {{
-      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-    }}
-  </script>
 
 </body>
 </html>
