@@ -7,65 +7,98 @@
   <title>Patience Agyiri Andoh</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary: #B795F4;
+      --light: #ffffff;
+    }
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
+      background: var(--light);
       color: #333;
+      overflow-x: hidden;
     }
     header {
-      background: url('hero_photo.jpg') no-repeat center center/cover;
-      height: 90vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
       position: relative;
+      height: 90vh;
+      overflow: hidden;
     }
-    header::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
+    .slider {
       height: 100%;
       width: 100%;
-      background: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      animation: fade 18s infinite;
     }
-    .hero-content {
+    .slider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      opacity: 0;
+      animation: slideFade 18s infinite;
+    }
+    .slider img:nth-child(1) { animation-delay: 0s; }
+    .slider img:nth-child(2) { animation-delay: 6s; }
+    .slider img:nth-child(3) { animation-delay: 12s; }
+
+    @keyframes slideFade {
+      0%, 100% { opacity: 0; }
+      10%, 30% { opacity: 1; }
+      40%, 90% { opacity: 0; }
+    }
+
+    .hero-text {
       position: relative;
-      z-index: 1;
-      max-width: 700px;
+      z-index: 2;
+      text-align: center;
+      top: 30%;
+      color: white;
       padding: 2em;
+      background: rgba(0,0,0,0.4);
+      margin: 0 auto;
+      max-width: 700px;
+      border-radius: 10px;
     }
-    .hero-content h1 {
-      font-size: 3em;
-      margin-bottom: 0.5em;
+    nav {
+      background: var(--primary);
+      padding: 1em;
+      text-align: center;
     }
-    .hero-content p {
-      font-size: 1.2em;
-      line-height: 1.6;
+    nav button {
+      background: white;
+      color: var(--primary);
+      font-weight: bold;
+      padding: 0.7em 1.2em;
+      margin: 0 0.5em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s;
     }
-    section {
-      padding: 4em 2em;
-      max-width: 1000px;
+    nav button:hover {
+      background: #e9d7ff;
+    }
+    .tab-content {
+      display: none;
+      padding: 2em;
+      max-width: 900px;
       margin: auto;
+      animation: fadeIn 0.6s ease-in;
     }
-    section h2 {
-      color: #6B46C1;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 0.3em;
-      margin-bottom: 1em;
+    .tab-content.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     footer {
-      background-color: #6B46C1;
+      background: var(--primary);
       color: white;
       text-align: center;
       padding: 1.5em 1em;
     }
-    .social-icons {
-      margin-top: 1em;
-    }
-    .social-icons a {
+    .icons a {
       color: white;
       margin: 0 10px;
       font-size: 1.3em;
@@ -74,39 +107,63 @@
   </style>
 </head>
 <body>
+
   <header>
-    <div class="hero-content">
+    <div class="slider">
+      <img src="slide1.jpg" alt="Photo 1">
+      <img src="slide2.jpg" alt="Photo 2">
+      <img src="slide3.jpg" alt="Photo 3">
+    </div>
+    <div class="hero-text">
       <h1>Patience Agyiri Andoh</h1>
-      <p>Inspired by the loss of my mother to cancer, I am committed to saving lives through science, research, and education. Through the Cancer Biology Series and my academic journey, I hope to inform, inspire, and improve lives in Ghana and beyond.</p>
+      <p>Hope through science, healing through education. Empowering others in the fight against cancer.</p>
     </div>
   </header>
 
-  <section id="education">
+  <nav>
+    <button onclick="showTab('education')">Education</button>
+    <button onclick="showTab('research')">Research</button>
+    <button onclick="showTab('work')">Work</button>
+    <button onclick="showTab('community')">Community Service</button>
+  </nav>
+
+  <div id="education" class="tab-content active">
     <h2>Education</h2>
-    <p>I am currently pursuing a BSc. in Biological Sciences at Kwame Nkrumah University of Science and Technology (KNUST), Kumasi – Ghana. Ranked in the top 15% of my class, I have earned academic honors in Biochemistry, Immunology, and Microbiology.</p>
-  </section>
+    <p>BSc. Biological Sciences at Kwame Nkrumah University of Science and Technology (KNUST), Kumasi – Ghana.<br>
+    Academic honors in Biochemistry, Immunology, and Microbiology.</p>
+  </div>
 
-  <section id="research">
+  <div id="research" class="tab-content">
     <h2>Research</h2>
-    <p>My research work explores pressing biological challenges in Ghana and globally. I have led a capstone project on mercury exposure among gold miners and investigated microbial diversity in the environment. I am also passionate about cancer biology and actively develop public education tools through the Cancer Biology Series initiative.</p>
-  </section>
+    <p>Capstone project on mercury exposure among gold miners. Studies in microbial diversity and cancer biology.<br>
+    Founder of the Cancer Biology Series initiative for student-led education and outreach.</p>
+  </div>
 
-  <section id="work">
+  <div id="work" class="tab-content">
     <h2>Work</h2>
-    <p>My hands-on experience includes internships at Holy Trinity Medical Center and Kinapharma Ltd., where I contributed to research, blood analysis, and pharmaceutical quality control. These roles sharpened my lab skills, from CBC testing to chromatographic analysis.</p>
-  </section>
+    <p>Intern at Holy Trinity Medical Center and Kinapharma Ltd. Experience in hematology, CBC, and pharmaceutical analysis.</p>
+  </div>
 
-  <section id="community">
+  <div id="community" class="tab-content">
     <h2>Community Service</h2>
-    <p>As General Secretary of the KNUST Debate Society and former Deputy Head of the Library Committee, I’ve led initiatives to empower students academically and socially. I also mentor junior biological science students and develop outreach projects, such as my Cancer Biology Series, to promote awareness and health literacy.</p>
-  </section>
+    <p>Secretary of KNUST Debate Society. Mentorship and outreach through the Cancer Biology Series.<br>
+    Leadership roles in student committees and science education efforts.</p>
+  </div>
 
   <footer>
     <p>Patience Agyiri Andoh &mdash; All Rights Reserved</p>
-    <div class="social-icons">
-      <a href="mailto:patienceandoh300@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.linkedin.com/in/patienceagyiriandoh/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <div class="icons">
+      <a href="mailto:patienceandoh300@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/patienceagyiriandoh/" target="_blank"><i class="fab fa-linkedin"></i></a>
     </div>
   </footer>
+
+  <script>
+    function showTab(id) {{
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }}
+  </script>
+
 </body>
 </html>
