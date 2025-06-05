@@ -1,38 +1,48 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Patience Agyiri Andoh</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --primary: #b88be1;
-      --overlay: rgba(0, 0, 0, 0.5);
+      --overlay: rgba(0, 0, 0, 0.4);
+      --text-light: #fff;
+      --transition: 0.3s ease-in-out;
     }
-    body, html {
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    body, html {
       height: 100%;
       font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
       overflow: hidden;
     }
+
     .slideshow-container {
       position: relative;
       width: 100%;
       height: 100vh;
-      background-color: #000;
     }
+
     .slideshow-container img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       position: absolute;
+      top: 0;
+      left: 0;
       opacity: 0;
-      transition: opacity 1s ease-in-out;
       animation: fadeSlideshow 18s infinite;
     }
+
     .slideshow-container img:nth-child(1) { animation-delay: 0s; }
     .slideshow-container img:nth-child(2) { animation-delay: 6s; }
     .slideshow-container img:nth-child(3) { animation-delay: 12s; }
@@ -45,58 +55,62 @@
 
     .quote-box {
       position: absolute;
-      bottom: 90px;
-      width: 100%;
-      max-width: 90%;
-      margin: 0 auto;
-      text-align: center;
-      color: white;
-      background: var(--overlay);
-      font-size: 1.3em;
-      line-height: 1.5;
-      padding: 1em;
-      border-radius: 5px;
-      z-index: 2;
+      bottom: 80px;
       left: 50%;
       transform: translateX(-50%);
+      background: var(--overlay);
+      color: var(--text-light);
+      padding: 1em 2em;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 90%;
+      z-index: 2;
     }
 
     .social {
       position: absolute;
-      bottom: 25px;
-      width: 100%;
-      text-align: center;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       z-index: 2;
     }
+
     .social a {
       color: white;
-      margin: 0 15px;
+      margin: 0 12px;
       font-size: 1.5em;
-      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .social a:hover {
+      color: var(--primary);
     }
 
     .menu-icon {
       position: absolute;
       top: 20px;
-      right: 30px;
+      right: 25px;
+      font-size: 2em;
+      color: white;
       z-index: 3;
       cursor: pointer;
-      color: white;
-      font-size: 2em;
     }
 
     .menu {
-      position: absolute;
+      position: fixed;
       top: 0;
       right: 0;
-      background-color: var(--primary);
-      color: white;
-      width: 250px;
       height: 100vh;
+      width: 260px;
+      background: var(--primary);
+      color: white;
       transform: translateX(100%);
-      transition: transform 0.3s ease-in-out;
+      transition: var(--transition);
       z-index: 4;
-      padding: 2em 1.5em;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
     }
 
     .menu.active {
@@ -104,30 +118,28 @@
     }
 
     .menu a {
-      display: block;
-      margin: 1em 0;
+      margin: 1rem 0;
       color: white;
       text-decoration: none;
-      font-size: 1.1em;
+      font-size: 1.1rem;
     }
 
     .menu a:hover {
       text-decoration: underline;
     }
 
-    @media screen and (max-width: 600px) {
-      .slideshow-container img {
-        object-fit: contain;
-      }
+    @media screen and (max-width: 768px) {
       .quote-box {
-        font-size: 1em;
-        max-width: 90%;
+        font-size: 1rem;
+        padding: 1em;
+      }
+      .menu {
+        width: 80%;
       }
     }
   </style>
 </head>
 <body>
-
   <div class="slideshow-container">
     <img src="slide1.jpg" alt="Slide 1">
     <img src="slide2.jpg" alt="Slide 2">
@@ -145,8 +157,9 @@
     <div class="menu-icon" onclick="toggleMenu()">
       <i class="fas fa-bars"></i>
     </div>
+
     <div class="menu" id="menu">
-      <a href="index.html" onclick="closeMenu()"> Home</a>
+      <a href="index.html" onclick="closeMenu()">🏠 Home</a>
       <a href="about.html" onclick="closeMenu()">About</a>
       <a href="education.html" onclick="closeMenu()">Education</a>
       <a href="research.html" onclick="closeMenu()">Research</a>
@@ -166,6 +179,5 @@
       document.getElementById('menu').classList.remove('active');
     }
   </script>
-
 </body>
 </html>
