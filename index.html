@@ -6,29 +6,75 @@
   <title>Patience Agyiri Andoh</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --bg-color: #fefcff;
+      --text-color: #333;
+      --accent-color: #6B46C1;
+      --header-bg: #eae0f8;
+    }
+    [data-theme="dark"] {
+      --bg-color: #1e1e1e;
+      --text-color: #ddd;
+      --accent-color: #d3bdf0;
+      --header-bg: #2e2e3d;
+    }
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: #fefcff;
-      color: #333;
+      background: var(--bg-color);
+      color: var(--text-color);
       margin: 0;
       padding: 0;
     }
-    nav {
-      width: 100%;
-      background: #eae0f8;
-      padding: 1em;
+    header {
+      background: var(--header-bg);
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 1em;
     }
-    nav a {
-      text-decoration: none;
-      color: #6B46C1;
+    .menu-toggle {
+      font-size: 1.5em;
+      cursor: pointer;
+      color: var(--accent-color);
+    }
+    .site-title {
+      flex: 1;
+      text-align: center;
       font-weight: bold;
-      font-size: 1em;
+      font-size: 1.3em;
+      color: var(--accent-color);
     }
-    nav a:hover {
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+    .header-right input {
+      padding: 0.4em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .mode-switch {
+      padding: 0.4em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: white;
+      font-size: 0.9em;
+    }
+    .nav-menu {
+      display: none;
+      flex-direction: column;
+      background: #f4ebfa;
+      padding: 1em;
+      font-size: 0.85em;
+    }
+    .nav-menu a {
+      margin: 0.3em 0;
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+    .nav-menu a:hover {
       text-decoration: underline;
     }
     .container {
@@ -59,11 +105,11 @@
     .profile p {
       margin: 0.2em 0;
       font-size: 0.95em;
-      color: #555;
+      color: #777;
     }
     .profile .links a {
       margin: 0 10px;
-      color: #6B46C1;
+      color: var(--accent-color);
       font-size: 1.2em;
       text-decoration: none;
     }
@@ -82,17 +128,42 @@
     @media (min-width: 768px) {
       .profile {
         flex: 1 1 30%;
-        text-align: center;
       }
       .bio {
         flex: 1 1 65%;
+      }
+      .nav-menu {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1em;
+        padding: 0.5em;
+      }
+      .nav-menu a {
+        margin: 0;
       }
     }
   </style>
 </head>
 <body>
 
-<nav>
+<header>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </div>
+  <div class="site-title">Patience Agyiri Andoh</div>
+  <div class="header-right">
+    <input type="text" placeholder="Search..." />
+    <select class="mode-switch" onchange="changeTheme(this.value)">
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="auto">Auto</option>
+    </select>
+  </div>
+</header>
+
+<div class="nav-menu" id="navMenu">
   <a href="index.html">Home</a>
   <a href="education.html">Skills</a>
   <a href="research.html">Research Projects</a>
@@ -100,7 +171,7 @@
   <a href="leadership.html">Leadership and Volunteerism</a>
   <a href="blog.html">Blogs</a>
   <a href="community.html">Extra Curricular Activities</a>
-</nav>
+</div>
 
 <div class="container">
   <div class="profile">
@@ -122,21 +193,42 @@
 
     <h1>Education</h1>
     <p><strong>Senior, BSc. Biological Sciences</strong> — KNUST, Ghana </p>
-    <p>Impact</p>
+    <p><strong>Impact</strong>
     <ul>
-      <li>Academic mentor to 20+ junior students, raising pass rate by 30%</li>
-      <li>Led workshops improving capstone grades for 100% of participants</li>
+    <li>Academic mentor to 20+ junior students, raising pass rate by 30%</li>
+    <li>Led workshops improving capstone grades for 100% of participants</li>
     </ul>
 
     <h1>Interests</h1>
     <ul>
-      <li>Cancer Biology</li>
-      <li>Biology Education</li>
+    <li>Cancer Biology</li>
+    <li>Biology Education</li>
     </ul>
   </div>
 </div>
 
-<!-- Font Awesome for icons -->
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('navMenu');
+  if (window.innerWidth < 768) {
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+  }
+}
+
+function changeTheme(mode) {
+  if (mode === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else if (mode === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+  } else if (mode === 'auto') {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  }
+}
+</script>
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 </body>
