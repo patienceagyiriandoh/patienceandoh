@@ -3,181 +3,127 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Patience Agyiri Andoh</title>
+  <title>Patience Agyiri Andoh - Undergraduate Student</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    :root {
-      --primary: #b88be1;
-      --overlay: rgba(0, 0, 0, 0.4);
-      --text-light: #fff;
-      --transition: 0.3s ease-in-out;
-    }
-
-    * {
-      box-sizing: border-box;
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fefcff;
+      color: #333;
       margin: 0;
       padding: 0;
     }
-
-    body, html {
-      height: 100%;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #000;
-      overflow: hidden;
-    }
-
-    .slideshow-container {
-      position: relative;
+    nav {
       width: 100%;
-      height: 100vh;
-    }
-
-    .slideshow-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      animation: fadeSlideshow 18s infinite;
-    }
-
-    .slideshow-container img:nth-child(1) { animation-delay: 0s; }
-    .slideshow-container img:nth-child(2) { animation-delay: 6s; }
-    .slideshow-container img:nth-child(3) { animation-delay: 12s; }
-
-    @keyframes fadeSlideshow {
-      0%, 100% { opacity: 0; }
-      10%, 30% { opacity: 1; }
-      40%, 90% { opacity: 0; }
-    }
-
-    .quote-box {
-      position: absolute;
-      bottom: 80px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--overlay);
-      color: var(--text-light);
-      padding: 1em 2em;
-      font-size: 1.2rem;
-      border-radius: 10px;
       text-align: center;
-      max-width: 90%;
-      z-index: 2;
+      background: #eae0f8;
+      padding: 1em 0;
     }
-
-    .social {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-    }
-
-    .social a {
-      color: white;
-      margin: 0 12px;
-      font-size: 1.5em;
-      transition: var(--transition);
-    }
-
-    .social a:hover {
-      color: var(--primary);
-    }
-
-    .menu-icon {
-      position: absolute;
-      top: 20px;
-      right: 25px;
-      font-size: 2em;
-      color: white;
-      z-index: 3;
-      cursor: pointer;
-    }
-
-    .menu {
-      position: fixed;
-      top: 0;
-      right: 0;
-      height: 100vh;
-      width: 260px;
-      background: var(--primary);
-      color: white;
-      transform: translateX(100%);
-      transition: var(--transition);
-      z-index: 4;
-      padding: 2rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .menu.active {
-      transform: translateX(0);
-    }
-
-    .menu a {
-      margin: 1rem 0;
-      color: white;
+    nav a {
+      margin: 0 15px;
       text-decoration: none;
-      font-size: 1.1rem;
+      color: #6B46C1;
+      font-weight: bold;
+      font-size: 1em;
     }
-
-    .menu a:hover {
+    nav a:hover {
       text-decoration: underline;
     }
-
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 2em;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 2em;
+    }
+    .profile {
+      flex: 1 1 250px;
+      text-align: center;
+    }
+    .profile img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 1em;
+    }
+    .profile h2 {
+      font-size: 1.5em;
+      margin: 0.5em 0 0.2em;
+    }
+    .profile p {
+      margin: 0.2em 0;
+      font-size: 0.95em;
+      color: #555;
+    }
+    .profile .links a {
+      margin: 0 10px;
+      color: #6B46C1;
+      font-size: 1.2em;
+      text-decoration: none;
+    }
+    .bio {
+      flex: 2 1 500px;
+    }
+    .bio h1 {
+      font-size: 2em;
+      color: #b88be1;
+      margin-bottom: 0.5em;
+    }
+    .bio p {
+      line-height: 1.7;
+      font-size: 1em;
+      margin-bottom: 1em;
+    }
     @media screen and (max-width: 768px) {
-      .quote-box {
-        font-size: 1rem;
+      .container {
+        flex-direction: column;
+        align-items: center;
         padding: 1em;
       }
-      .menu {
-        width: 80%;
+      nav a {
+        display: block;
+        margin: 0.5em 0;
       }
     }
   </style>
 </head>
 <body>
-  <div class="slideshow-container">
-    <img src="slide1.jpg" alt="Slide 1">
-    <img src="slide2.jpg" alt="Slide 2">
-    <img src="slide3.jpg" alt="Slide 3">
 
-    <div class="quote-box">
-      Hope through science, healing through education and empowering others in the fight against cancer.
-    </div>
+<nav>
+  <a href="#">Home</a>
+  <a href="#">Skills</a>
+  <a href="#">Research Projects</a>
+  <a href="#">Work Experience</a>
+  <a href="#">Leadership and Volunteerism</a>
+  <a href="#">Blog</a>
+  <a href="#">Extra Curricular Activities</a>
+</nav>
 
-    <div class="social">
+<div class="container">
+  <div class="profile">
+    <img src="slide1.jpg" alt="Patience Agyiri Andoh">
+    <h2>Patience Agyiri Andoh</h2>
+    <p>Undergraduate Student</p>
+    <div class="links">
       <a href="mailto:patienceandoh300@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.linkedin.com/in/patienceagyiriandoh/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    </div>
-
-    <div class="menu-icon" onclick="toggleMenu()">
-      <i class="fas fa-bars"></i>
-    </div>
-
-    <div class="menu" id="menu">
-      <a href="index.html" onclick="closeMenu()"> Return to Home</a>
-      <a href="about.html" onclick="closeMenu()">About</a>
-      <a href="education.html" onclick="closeMenu()">Education</a>
-      <a href="research.html" onclick="closeMenu()">Research</a>
-      <a href="work.html" onclick="closeMenu()">Work</a>
-      <a href="cancer.html" onclick="closeMenu()">Cancer Biology Series</a>
-      <a href="articles.html" onclick="closeMenu()">Articles</a>
-      <a href="leadership.html" onclick="closeMenu()">Leadership</a>
-      <a href="community.html" onclick="closeMenu()">Community Service</a>
+      <a href="https://twitter.com" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="cv.pdf" title="CV"><i class="fas fa-graduation-cap"></i></a>
+      <a href="https://www.linkedin.com/in/patienceagyiriandoh/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
     </div>
   </div>
 
-  <script>
-    function toggleMenu() {
-      document.getElementById('menu').classList.toggle('active');
-    }
-    function closeMenu() {
-      document.getElementById('menu').classList.remove('active');
-    }
-  </script>
+  <div class="bio">
+    <h1>About Me</h1>
+    <p>I am an aspiring biomedical scientist with a growing interest in cancer research, molecular biology, and science communication. As an undergraduate student at KNUST, I combine my academic learning with real-world initiatives—leading projects, volunteering in community health, and contributing to educational programs.</p>
+    <p>My journey so far has included hands-on lab experience, debate competitions, and organizing academic series like the Cancer Biology Series. I believe in research with purpose, leadership through service, and learning that transcends the classroom.</p>
+  </div>
+</div>
+
+<!-- Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
 </body>
 </html>
