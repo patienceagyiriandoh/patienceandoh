@@ -10,14 +10,25 @@
       --bg-color: #fefcff;
       --text-color: #333;
       --accent-color: #6B46C1;
+      --header-bg: #eae0f8;
     }
     [data-theme="dark"] {
       --bg-color: #1e1e1e;
-      --text-color: #eee;
-      --accent-color: #cba4f1;
+      --text-color: #ddd;
+      --accent-color: #d3bdf0;
+      --header-bg: #2e2e3d;
     }
-
-  header {
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 2em 1.5em;
+      max-width: 800px;
+      margin-inline: auto;
+      line-height: 1.8;
+    }
+    header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -27,82 +38,67 @@
       top: 0;
       z-index: 1000;
     }
-
-    
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      margin: 0;
-      padding: 2em 1em;
-      max-width: 900px;
-      margin-inline: auto;
-      line-height: 1.8;
-    }
-    .top-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 2em;
-    }
-    .back-link {
+    .back-icon {
       color: var(--accent-color);
-      text-decoration: none;
       font-size: 1em;
+      text-decoration: none;
     }
     .mode-switch {
-      border: 1px solid var(--accent-color);
-      background: none;
-      color: var(--accent-color);
-      padding: 0.3em 0.6em;
+      padding: 0.4em;
       border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: white;
+      color: #333;
       font-size: 0.9em;
     }
     h1 {
+      font-size: 2em;
       color: var(--accent-color);
-      font-size: 1.8em;
       margin-bottom: 0.5em;
     }
     h2 {
-      color: var(--accent-color);
+      font-size: 1.3em;
       margin-top: 1.5em;
-      font-size: 1.2em;
+      color: var(--accent-color);
     }
     ul {
-      padding-left: 1.2em;
+      padding-left: 1.5em;
     }
     li {
       margin-bottom: 0.6em;
     }
     @media screen and (max-width: 600px) {
+      body {
+        font-size: 0.95em;
+      }
       h1 {
         font-size: 1.5em;
       }
-      .top-bar {
+      h2 {
+        font-size: 1.1em;
+      }
+      header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 1em;
+        gap: 0.7em;
       }
     }
   </style>
 </head>
 <body>
 
-<div class="top-bar">
 <header>
   <a class="back-icon" href="javascript:history.back()"><i class="fas fa-arrow-left"></i> Back</a>
-  <select class="theme-toggle" onchange="changeTheme(this.value)">
+  <select class="mode-switch" onchange="changeTheme(this.value)">
     <option value="light">Light</option>
     <option value="dark">Dark</option>
   </select>
 </header>
-</div>
-  
+
 <h1>Research Projects</h1>
 
-<h2>Jul. 2024 – Scientific Research Capstone Project</h2>
-<p><strong>Department of Theoretical and Applied Biology, KNUST<br>
-Topic:</strong> Impacts of Mercury Exposure on Human Health</p>
+<h2>Jul. 2024 &mdash; Scientific Research Capstone Project</h2>
+<p><strong>Department of Theoretical and Applied Biology, KNUST<br>Topic:</strong> Impacts of Mercury Exposure on Human Health</p>
 <ul>
   <li>Synthesized peer-reviewed studies of 343 gold miners; identified 46.6% exposed to mercury</li>
   <li>Used Chi-square & bivariate analysis from literature to connect mercury with numbness & rashes</li>
@@ -110,9 +106,8 @@ Topic:</strong> Impacts of Mercury Exposure on Human Health</p>
   <li>Presented poster and defended results, earning an A in Scientific Research & Communication</li>
 </ul>
 
-<h2>Feb. 2023 – Microbiology Project</h2>
-<p><strong>L.A. Ofori Group, Department of Theoretical and Applied Biology, KNUST<br>
-Topic:</strong> Ubiquitous Presence of Bacteria: An Environmental Exploration</p>
+<h2>Feb. 2023 &mdash; Microbiology Project</h2>
+<p><strong>L.A. Ofori Group, Department of Theoretical and Applied Biology, KNUST<br>Topic:</strong> Ubiquitous Presence of Bacteria: An Environmental Exploration</p>
 <ul>
   <li>Sterilized 40 petri dishes with Nutrient and Potato Dextrose Agar using 70% ethanol</li>
   <li>Sampled lab air, outdoor air, soil, and plants — 100% of plates showed microbial growth</li>
@@ -120,13 +115,13 @@ Topic:</strong> Ubiquitous Presence of Bacteria: An Environmental Exploration</p
 </ul>
 
 <script>
-  function changeTheme(mode) {
-    if (mode === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
+function changeTheme(mode) {
+  if (mode === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
   }
+}
 </script>
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
