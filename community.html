@@ -1,51 +1,145 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Community Service | Patience Agyiri Andoh</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community Service - Patience Agyiri Andoh</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-@media screen and (max-width: 600px) { body { padding: 1em; font-size: 1em; } h1 { font-size: 1.5em; } }
+    :root {
+      --bg-color: #fefcff;
+      --text-color: #333;
+      --accent-color: #6B46C1;
+      --header-bg: #eae0f8;
+    }
+    [data-theme="dark"] {
+      --bg-color: #1e1e1e;
+      --text-color: #ddd;
+      --accent-color: #d3bdf0;
+      --header-bg: #2e2e3d;
+    }
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #fefcff;
-      color: #333;
-      padding: 3em 2em;
-      line-height: 1.8;
-      max-width: 800px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: var(--header-bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em 1.5em;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .back-btn {
+      font-size: 1.3em;
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+    .header-right select {
+      padding: 0.4em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: white;
+      font-size: 0.9em;
+    }
+    main {
+      max-width: 900px;
       margin: auto;
+      padding: 2em 1em;
     }
     h1 {
-      color: #b88be1;
-      font-size: 2em;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 0.5em;
+      color: var(--accent-color);
+      font-size: 1.8em;
+      margin-bottom: 1em;
+      text-align: center;
     }
-    h3 {
-      color: #6B46C1;
-      margin-top: 1.5em;
+    p, ul {
+      margin-bottom: 1.2em;
     }
     ul {
       padding-left: 1.2em;
     }
-    a {
-      color: #6B46C1;
-      display: inline-block;
-      margin-top: 2em;
-      text-decoration: none;
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5em;
+      }
     }
   </style>
 </head>
 <body>
-  
-        <h1>Community Service</h1>
+  <header>
+    <a href="javascript:history.back()" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+    <div class="header-right">
+      <select onchange="changeTheme(this.value)">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </div>
+  </header>
+
+  <main>
+    <h1>Community Service</h1>
+    <p><strong>My Debate Journey</strong><br>
+    Debate is a platform where diverse topics converge—spanning science, arts, literature, politics, policymaking, education, philosophy, human interactions, and more. Through my journey, I have grown into a global citizen capable of contributing meaningfully to conversations on a vast array of subjects.</p>
+    <p>I have honed my confidence in sharing and articulating ideas, sharpened my oral and presentation skills, and cultivated the ability to explore the nuances of complex topics while reflecting on their interactions with my identity and personal growth.</p>
+    <p><strong>Contributions in Debate and Public Speaking</strong><br>
+    In the debate community, I have embraced diverse roles as a speaker and adjudicator across various competitions held locally, nationally, continentally, and globally.</p>
+
+    <ul>
+      <li><strong>Speaker:</strong>
         <ul>
-          <li>Science-based classroom outreach</li>
-          <li>Mentored junior biological science students</li>
-          <li>Led public education + blood donation programs</li>
+          <li>Finalist and 7th Best Speaker, Vice Chancellors Debate Cup (Novice) 2023</li>
+          <li>Semi-Finalist, R.P. Baffour Memorial Debate Championship 2023</li>
+          <li>Quarter Finalist, Kumasi Debate Open (Novice) 2023</li>
+          <li>Quarter Finalist, Dialectix Pro-Am Debate Championship 2023</li>
         </ul>
-        
-  <a href="index.html">← Back to Home</a>
+      </li>
+      <li><strong>Adjudicator:</strong>
+        <ul>
+          <li>Best Adjudicator, Genesis Debate Open 2025</li>
+          <li>Second Best Adjudicator, Easters Debate Cup 2024</li>
+          <li>Silver Finals Chair, London's Debate Open 2024</li>
+          <li>Finals Chair, Oragon Debate Cup High School Finals 2024</li>
+          <li>Semi-Finals Chair, K. A. Andam Debate Championship 2024</li>
+          <li>Quarter Finals Adjudicator, R.P. Baffour Memorial Debate Championship 2024</li>
+        </ul>
+      </li>
+    </ul>
+
+    <p><strong>Summary of Participation</strong><br>
+    Total: 30 Competitions</p>
+    <ul>
+      <li>Debate (Speaker): Internal (6), External (9)</li>
+      <li>Debate (Judge): Internal (4), External (6)</li>
+      <li>Public Speaking (Speaker): Internal (1), External (2)</li>
+      <li>Public Speaking (Judge): Internal (1), External (1)</li>
+    </ul>
+
+    <p><strong>Leadership in Debate</strong><br>
+    As General Secretary of the KNUST Debate Society (Aug. 2024 – Dec. 2024), I led key initiatives:</p>
+    <ul>
+      <li>Led the team to victory at the 10th Ghana Universities Debate Championship</li>
+      <li>Organized the KNUST Debate Open for global visibility</li>
+      <li>Launched The Debater’s Chronicle journal</li>
+      <li>Led the team to win The Great Debate's maiden edition</li>
+    </ul>
+
+    <p><strong>Conclusion</strong><br>
+    Debate has equipped me with skills that go beyond the stage—collaboration, persuasive communication, and critical thinking. These experiences shape my academic and professional journey and prepare me to contribute meaningfully to every community I engage with.</p>
+  </main>
+
+  <script>
+    function changeTheme(mode) {
+      document.documentElement.setAttribute('data-theme', mode);
+    }
+  </script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
