@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Research | Patience Agyiri Andoh</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research Projects - Patience Agyiri Andoh</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -23,107 +23,100 @@
       background-color: var(--bg-color);
       color: var(--text-color);
       margin: 0;
-      padding: 2em 1.5em;
-      max-width: 800px;
-      margin-inline: auto;
-      line-height: 1.8;
+      padding: 0;
     }
     header {
+      background: var(--header-bg);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--header-bg);
-      padding: 1em;
+      padding: 1em 1.5em;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
-    .back-icon {
+    .back-btn {
+      font-size: 1.3em;
       color: var(--accent-color);
-      font-size: 1em;
       text-decoration: none;
     }
-    .mode-switch {
+    .header-right select {
       padding: 0.4em;
       border-radius: 5px;
       border: 1px solid #ccc;
       background-color: white;
-      color: #333;
       font-size: 0.9em;
     }
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 2em 1em;
+    }
     h1 {
-      font-size: 2em;
       color: var(--accent-color);
-      margin-bottom: 0.5em;
+      font-size: 1.8em;
+      margin-bottom: 1em;
     }
     h2 {
-      font-size: 1.3em;
-      margin-top: 1.5em;
       color: var(--accent-color);
+      font-size: 1.2em;
+      margin-top: 2em;
     }
     ul {
-      padding-left: 1.5em;
+      padding-left: 1.2em;
     }
-    li {
-      margin-bottom: 0.6em;
+    p, li {
+      line-height: 1.6;
+      font-size: 1em;
     }
-    @media screen and (max-width: 600px) {
-      body {
-        font-size: 0.95em;
-      }
-      h1 {
-        font-size: 1.5em;
-      }
-      h2 {
-        font-size: 1.1em;
-      }
+    @media (max-width: 600px) {
       header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.7em;
+        gap: 0.5em;
       }
     }
   </style>
 </head>
 <body>
+  <header>
+    <a href="javascript:history.back()" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+    <div class="header-right">
+      <select onchange="changeTheme(this.value)">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </div>
+  </header>
+  <main>
+    <h1>Research Projects</h1>
 
-<header>
-  <a class="back-icon" href="javascript:history.back()"><i class="fas fa-arrow-left"></i> Back</a>
-  <select class="mode-switch" onchange="changeTheme(this.value)">
-    <option value="light">Light</option>
-    <option value="dark">Dark</option>
-  </select>
-</header>
+    <h2>Jul. 2024<br>Team Lead, Scientific Research Capstone Project, Department of Theoretical and Applied Biology, KNUST</h2>
+    <p><strong>Topic:</strong> Impacts of Mercury Exposure on Human Health</p>
+    <ul>
+      <li>Synthesized data from peer-reviewed studies, including a cross-sectional investigation of 343 small-scale gold miners, to evaluate mercury exposure levels and health risks, identifying that 46.6% of miners were occupationally exposed to mercury</li>
+      <li>Analyzed findings using statistical tools (Chi-square tests and bivariate analysis) reported in existing literature to establish links between mercury exposure and adverse health effects such as numbness and skin rashes, and recommended interventions including public health campaigns and PPE training</li>
+      <li>Presented a comprehensive poster summarizing findings and solutions, earning an A grade in Scientific Research and Communication following an evaluation through oral defense and a written exam</li>
+    </ul>
 
-<h1>Research Projects</h1>
+    <h2>Feb. 2023<br>Microbiology Project, L.A. Ofori Group, Department of Theoretical and Applied Biology, KNUST</h2>
+    <p><strong>Topic:</strong> Ubiquitous Presence of Bacteria: An Environmental Exploration</p>
+    <ul>
+      <li>Prepared and sterilized 40 petri dishes with Nutrient and Potato Dextrose Agar, using 70% ethanol for surface sterilization, to expose various environmental samples (lab air, outdoor air, soil, and plants)</li>
+      <li>Analyzed growth on petri dishes after 24-48 hours, with 100% of the plates (40/40) showing microbial growth, confirming the ubiquitous presence of bacteria and fungi in diverse environments</li>
+      <li>Identified and classified microbial species, including Actinomyces, Staphylococcus, and Aspergillus, providing evidence of microbial diversity in common environmental settings</li>
+    </ul>
+  </main>
 
-<h2>Jul. 2024 &mdash; Scientific Research Capstone Project</h2>
-<p><strong>Department of Theoretical and Applied Biology, KNUST<br>Topic:</strong> Impacts of Mercury Exposure on Human Health</p>
-<ul>
-  <li>Synthesized peer-reviewed studies of 343 gold miners; identified 46.6% exposed to mercury</li>
-  <li>Used Chi-square & bivariate analysis from literature to connect mercury with numbness & rashes</li>
-  <li>Recommended interventions: PPE training, public health campaigns</li>
-  <li>Presented poster and defended results, earning an A in Scientific Research & Communication</li>
-</ul>
-
-<h2>Feb. 2023 &mdash; Microbiology Project</h2>
-<p><strong>L.A. Ofori Group, Department of Theoretical and Applied Biology, KNUST<br>Topic:</strong> Ubiquitous Presence of Bacteria: An Environmental Exploration</p>
-<ul>
-  <li>Sterilized 40 petri dishes with Nutrient and Potato Dextrose Agar using 70% ethanol</li>
-  <li>Sampled lab air, outdoor air, soil, and plants — 100% of plates showed microbial growth</li>
-  <li>Identified Actinomyces, Staphylococcus, and Aspergillus, confirming environmental diversity</li>
-</ul>
-
-<script>
-function changeTheme(mode) {
-  if (mode === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-  } else {
-    document.documentElement.setAttribute('data-theme', 'light');
-  }
-}
-</script>
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
+  <script>
+    function changeTheme(mode) {
+      if (mode === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    }
+  </script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
