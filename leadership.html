@@ -1,56 +1,173 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Leadership | Patience Agyiri Andoh</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leadership - Patience Agyiri Andoh</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-@media screen and (max-width: 600px) { body { padding: 1em; font-size: 1em; } h1 { font-size: 1.5em; } }
+    :root {
+      --bg-color: #fefcff;
+      --text-color: #333;
+      --accent-color: #6B46C1;
+      --header-bg: #eae0f8;
+    }
+    [data-theme="dark"] {
+      --bg-color: #1e1e1e;
+      --text-color: #ddd;
+      --accent-color: #d3bdf0;
+      --header-bg: #2e2e3d;
+    }
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #fefcff;
-      color: #333;
-      padding: 3em 2em;
-      line-height: 1.8;
-      max-width: 800px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: var(--header-bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em 1.5em;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .back-btn {
+      font-size: 1.3em;
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+    .header-right select {
+      padding: 0.4em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: white;
+      font-size: 0.9em;
+    }
+    main {
+      max-width: 900px;
       margin: auto;
+      padding: 2em 1em;
     }
     h1 {
-      color: #b88be1;
-      font-size: 2em;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 0.5em;
+      color: var(--accent-color);
+      font-size: 1.8em;
+      margin-bottom: 1em;
     }
-    h3 {
-      color: #6B46C1;
-      margin-top: 1.5em;
+    h2 {
+      color: var(--accent-color);
+      font-size: 1.2em;
+      margin-top: 2em;
     }
     ul {
       padding-left: 1.2em;
     }
-    a {
-      color: #6B46C1;
-      display: inline-block;
+    p, li {
+      line-height: 1.6;
+      font-size: 1em;
+    }
+    .section {
       margin-top: 2em;
-      text-decoration: none;
+    }
+    .section blockquote {
+      font-style: italic;
+      color: #777;
+      border-left: 4px solid var(--accent-color);
+      padding-left: 1em;
+    }
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5em;
+      }
     }
   </style>
 </head>
 <body>
-  
-        <h1>Leadership</h1>
-        <h3>Debate Society (General Secretary)</h3>
-        <ul>
-          <li>Trained 50+ debaters; raised wins by 30%</li>
-          <li>Founded “Debater’s Chronicle” journal, boosting engagement by 50%</li>
-        </ul>
-        <h3>Library Committee (Deputy Head)</h3>
-        <ul>
-          <li>Acquired 100+ student-access resources</li>
-          <li>Improved library access & quiet policy enforcement</li>
-        </ul>
-        
-  <a href="index.html">← Back to Home</a>
+  <header>
+    <a href="javascript:history.back()" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+    <div class="header-right">
+      <select onchange="changeTheme(this.value)">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </div>
+  </header>
+  <main>
+    <h1>Leadership & Volunteerism</h1>
+
+    <h2>Leadership</h2>
+    <h3>Aug. 2024 – Present</h3>
+    <p><strong>General Secretary and Editor-in-Chief, KNUST Debate Society</strong></p>
+    <ul>
+      <li>Organized and facilitated weekly training sessions for over 50 junior debaters, improving participation and skill development, resulting in a 30% increase in competition wins within 6 months</li>
+      <li>Launched the KDS Debater’s Chronicle, a quarterly journal documenting progress and achievements, increasing member engagement by 50%</li>
+    </ul>
+
+    <h3>Jan. 2023 – Aug. 2023</h3>
+    <p><strong>Library Committee Deputy Head, Biological Sciences Students’ Association, KNUST</strong></p>
+    <ul>
+      <li>Coordinated procurement and organization of over 100 essential reading materials</li>
+      <li>Ensured a quiet and conducive environment for 200+ students by implementing study policies</li>
+      <li>Liaised between students and librarians to streamline communication and resolve concerns efficiently</li>
+    </ul>
+
+    <h2>Volunteerism</h2>
+    <h3>1. Teaching Experience</h3>
+    <p><strong>Jan. 2022 – Present</strong> — Part-time Student-Teacher & Academic Mentor, Biological Sciences Students’ Association, KNUST</p>
+    <ul>
+      <li>Mentored 20 students in Molecular Biology and Biochemistry, improving assessment pass rate to 90%</li>
+      <li>Led workshops on lab reports and presentations; all participants improved capstone grades</li>
+      <li>Trained 30 students on Western Blotting and Pour Plate Method, reducing lab errors by 25%</li>
+    </ul>
+
+    <h3>2. Debate & Public Speaking</h3>
+    <div class="section">
+      <h3>My Debate Journey</h3>
+      <blockquote>
+        Debate has made me a global citizen. I've grown through discussions across science, literature, politics, and beyond—sharpening my critical thinking, communication, and personal growth. This journey has empowered me to reflect, lead, and engage.
+      </blockquote>
+
+      <h4>Contributions</h4>
+      <ul>
+        <li><strong>Speaker:</strong> Vice Chancellors Debate Cup (7th Best Speaker, Finalist), R.P. Baffour Memorial (Semi-Finalist), Kumasi Open (Quarter Finalist), Dialectix Pro-Am (Quarter Finalist)</li>
+        <li><strong>Adjudicator:</strong> Best Adjudicator (Genesis 2025), Silver Chair (London Open 2024), Finals Chair (Oragon Cup 2024), and more</li>
+      </ul>
+
+      <h4>Participation Summary</h4>
+      <ul>
+        <li>Debate (Speaker): Internal (6), External (9)</li>
+        <li>Debate (Judge): Internal (4), External (6)</li>
+        <li>Public Speaking (Speaker): Internal (1), External (2)</li>
+        <li>Public Speaking (Judge): Internal (1), External (1)</li>
+      </ul>
+
+      <h4>Leadership in Debate</h4>
+      <ul>
+        <li>Led KNUST to win the 10th Ghana Universities Debate Championship</li>
+        <li>Organized the first KNUST Debate Open to enhance global visibility</li>
+        <li>Launched The Debater’s Chronicle documenting the society’s progress</li>
+        <li>Led team to victory in The Great Debate</li>
+      </ul>
+
+      <h4>Conclusion</h4>
+      <p>Debate has transformed me into a confident, articulate, and critical thinker. I carry the lessons of persuasive communication, teamwork, and depth of thought into every endeavor—academic, professional, and personal.</p>
+    </div>
+  </main>
+
+  <script>
+    function changeTheme(mode) {
+      if (mode === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    }
+  </script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
