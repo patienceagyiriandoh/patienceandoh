@@ -1,56 +1,122 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Work | Patience Agyiri Andoh</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work Experience - Patience Agyiri Andoh</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-@media screen and (max-width: 600px) { body { padding: 1em; font-size: 1em; } h1 { font-size: 1.5em; } }
+    :root {
+      --bg-color: #fefcff;
+      --text-color: #333;
+      --accent-color: #6B46C1;
+      --header-bg: #eae0f8;
+    }
+    [data-theme="dark"] {
+      --bg-color: #1e1e1e;
+      --text-color: #ddd;
+      --accent-color: #d3bdf0;
+      --header-bg: #2e2e3d;
+    }
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #fefcff;
-      color: #333;
-      padding: 3em 2em;
-      line-height: 1.8;
-      max-width: 800px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: var(--header-bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em 1.5em;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .back-btn {
+      font-size: 1.3em;
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+    .header-right select {
+      padding: 0.4em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: white;
+      font-size: 0.9em;
+    }
+    main {
+      max-width: 900px;
       margin: auto;
+      padding: 2em 1em;
     }
     h1 {
-      color: #b88be1;
-      font-size: 2em;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 0.5em;
+      color: var(--accent-color);
+      font-size: 1.8em;
+      margin-bottom: 1em;
     }
-    h3 {
-      color: #6B46C1;
-      margin-top: 1.5em;
+    h2 {
+      color: var(--accent-color);
+      font-size: 1.2em;
+      margin-top: 2em;
     }
     ul {
       padding-left: 1.2em;
     }
-    a {
-      color: #6B46C1;
-      display: inline-block;
-      margin-top: 2em;
-      text-decoration: none;
+    p, li {
+      line-height: 1.6;
+      font-size: 1em;
+    }
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5em;
+      }
     }
   </style>
 </head>
 <body>
-  
-        <h1>Work Experience</h1>
-        <h3>Kinapharma QC Intern</h3>
-        <ul>
-          <li>Tested 100+ raw material batches using HPLC, FTIR, GC</li>
-          <li>Maintained 98% compliance with safety/quality standards</li>
-        </ul>
-        <h3>Holy Trinity Medical Intern</h3>
-        <ul>
-          <li>Drew 200+ blood samples; zero contamination</li>
-          <li>Analyzed 150+ monthly samples; contributed to chronic disease study</li>
-        </ul>
-        
-  <a href="index.html">← Back to Home</a>
+  <header>
+    <a href="javascript:history.back()" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+    <div class="header-right">
+      <select onchange="changeTheme(this.value)">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </div>
+  </header>
+  <main>
+    <h1>Work Experience</h1>
+
+    <h2>Sept. 2024 – Present</h2>
+    <p><strong>Quality Control Intern, Kinapharma Company Limited, Ghana</strong></p>
+    <ul>
+      <li>Tested raw materials (APIs, excipients, packaging materials) using HPLC, GC, and FTIR to verify identity, purity, and potency, ensuring compliance with USP, EP, and JP standards, resulting in the approval of 100+ batches monthly</li>
+      <li>Conducted microbiological and quantitative analyses (sterility, microbial limits, HPLC, titration, Karl Fischer) on raw materials to detect contaminants, achieving a 98% compliance rate with safety and quality standards</li>
+      <li>Documented and evaluated test results to ensure regulatory compliance, with 95% of raw materials passing purity, potency, and impurity tests, supporting reliable product development and supply chain continuity</li>
+    </ul>
+
+    <h2>Oct. 2023 – Dec. 2023</h2>
+    <p><strong>Laboratory Services Intern, Holy Trinity Medical Center, Accra-Ghana</strong></p>
+    <ul>
+      <li>Mastered blood sample collection techniques, ensuring contamination-free samples and achieving zero patient infections across over 200 sample collections</li>
+      <li>Analyzed blood samples using a centrifuge and automated hematology analyzer, providing accurate blood cell counts and hemoglobin levels, contributing to the completion of 150+ tests per month</li>
+      <li>Collaborated with a supervising doctor on a research project, contributing to data collection and analysis on health risk factors for chronic diseases, supporting the identification of 3 key risk factors in a study of 100 young adults</li>
+    </ul>
+  </main>
+
+  <script>
+    function changeTheme(mode) {
+      if (mode === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    }
+  </script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
