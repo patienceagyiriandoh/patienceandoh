@@ -1,54 +1,106 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Articles | Patience Agyiri Andoh</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Articles - Patience Agyiri Andoh</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-@media screen and (max-width: 600px) { body { padding: 1em; font-size: 1em; } h1 { font-size: 1.5em; } }
+    :root {
+      --bg-color: #fefcff;
+      --text-color: #333;
+      --accent-color: #6B46C1;
+      --header-bg: #eae0f8;
+    }
+    [data-theme="dark"] {
+      --bg-color: #1e1e1e;
+      --text-color: #ddd;
+      --accent-color: #d3bdf0;
+      --header-bg: #2e2e3d;
+    }
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #fefcff;
-      color: #333;
-      padding: 3em 2em;
-      line-height: 1.8;
-      max-width: 800px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: var(--header-bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em 1.5em;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .back-btn {
+      font-size: 1.3em;
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+    .header-right select {
+      padding: 0.4em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: white;
+      font-size: 0.9em;
+    }
+    main {
+      max-width: 900px;
       margin: auto;
+      padding: 2em 1em;
     }
     h1 {
-      color: #b88be1;
-      font-size: 2em;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 0.5em;
+      color: var(--accent-color);
+      font-size: 1.8em;
+      margin-bottom: 1em;
+      text-align: center;
     }
-    h3 {
-      color: #6B46C1;
-      margin-top: 1.5em;
+    p, ul {
+      margin-bottom: 1.2em;
     }
     ul {
       padding-left: 1.2em;
     }
-    a {
-      color: #6B46C1;
-      display: inline-block;
-      margin-top: 2em;
-      text-decoration: none;
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5em;
+      }
     }
   </style>
 </head>
 <body>
-  
-        <h1>How Debate and Research Work Together</h1>
-        <p>Debate and research build critical thinking, evidence-based logic, and articulate communication. Together they:</p>
-        <ul>
-          <li>Build evidence-based thinking</li>
-          <li>Enhance communication skills</li>
-          <li>Encourage open-mindedness</li>
-          <li>Develop resilience</li>
-          <li>Foster lifelong curiosity</li>
-        </ul>
-        
-  <a href="index.html">← Back to Home</a>
+  <header>
+    <a href="javascript:history.back()" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+    <div class="header-right">
+      <select onchange="changeTheme(this.value)">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </div>
+  </header>
+
+  <main>
+    <h1>How Debate and Research Work Together</h1>
+    <p>Debate and research build critical thinking, evidence-based logic, and articulate communication. Together they:</p>
+    <ul>
+      <li>Build evidence-based thinking</li>
+      <li>Enhance communication skills</li>
+      <li>Encourage open-mindedness</li>
+      <li>Develop resilience</li>
+      <li>Foster lifelong curiosity</li>
+    </ul>
+  </main>
+
+  <script>
+    function changeTheme(mode) {
+      document.documentElement.setAttribute('data-theme', mode);
+    }
+  </script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
