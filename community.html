@@ -135,11 +135,27 @@
     Debate has equipped me with skills that go beyond the stage—collaboration, persuasive communication, and critical thinking. These experiences shape my academic and professional journey and prepare me to contribute meaningfully to every community I engage with.</p>
   </main>
 
-  <script>
-    function changeTheme(mode) {
-      document.documentElement.setAttribute('data-theme', mode);
-    }
-  </script>
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('navMenu');
+  if (window.innerWidth < 768) {
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+  }
+}
+
+function changeTheme(mode) {
+  document.documentElement.setAttribute('data-theme', mode);
+  localStorage.setItem('theme', mode); // Save selection
+}
+
+// Load saved theme on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  document.querySelector('.mode-switch').value = savedTheme;
+});
+</script>
+
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
