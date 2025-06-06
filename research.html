@@ -1,57 +1,119 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Research | Patience Agyiri Andoh</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-@media screen and (max-width: 600px) { body { padding: 1em; font-size: 1em; } h1 { font-size: 1.5em; } }
+    :root {
+      --bg-color: #fefcff;
+      --text-color: #333;
+      --accent-color: #6B46C1;
+    }
+    [data-theme="dark"] {
+      --bg-color: #1e1e1e;
+      --text-color: #eee;
+      --accent-color: #cba4f1;
+    }
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #fefcff;
-      color: #333;
-      padding: 3em 2em;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 2em 1em;
+      max-width: 900px;
+      margin-inline: auto;
       line-height: 1.8;
-      max-width: 800px;
-      margin: auto;
+    }
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2em;
+    }
+    .back-link {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-size: 1em;
+    }
+    .mode-switch {
+      border: 1px solid var(--accent-color);
+      background: none;
+      color: var(--accent-color);
+      padding: 0.3em 0.6em;
+      border-radius: 5px;
+      font-size: 0.9em;
     }
     h1 {
-      color: #b88be1;
-      font-size: 2em;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 0.5em;
+      color: var(--accent-color);
+      font-size: 1.8em;
+      margin-bottom: 0.5em;
     }
-    h3 {
-      color: #6B46C1;
+    h2 {
+      color: var(--accent-color);
       margin-top: 1.5em;
+      font-size: 1.2em;
     }
     ul {
       padding-left: 1.2em;
     }
-    a {
-      color: #6B46C1;
-      display: inline-block;
-      margin-top: 2em;
-      text-decoration: none;
+    li {
+      margin-bottom: 0.6em;
+    }
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 1.5em;
+      }
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1em;
+      }
     }
   </style>
 </head>
 <body>
-  
-        <h1>Research</h1>
-        <h3>Mercury Exposure & Human Health</h3>
-        <ul>
-          <li>Reviewed data from 343 miners; found 46.6% exposed to mercury</li>
-          <li>Linked mercury to numbness, rashes; suggested PPE & public education</li>
-          <li>Earned A-grade for poster & oral defense</li>
-        </ul>
-        <h3>Microbial Diversity in the Environment</h3>
-        <ul>
-          <li>Sterilized and cultured bacteria/fungi from air, soil, and plants</li>
-          <li>Identified Actinomyces, Staph, and Aspergillus</li>
-        </ul>
-        
-  <a href="index.html">← Back to Home</a>
+
+<div class="top-bar">
+  <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
+  <select class="mode-switch" onchange="changeTheme(this.value)">
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+  </select>
+</div>
+
+<h1>Research Projects</h1>
+
+<h2>Jul. 2024 – Scientific Research Capstone Project</h2>
+<p><strong>Department of Theoretical and Applied Biology, KNUST<br>
+Topic:</strong> Impacts of Mercury Exposure on Human Health</p>
+<ul>
+  <li>Synthesized peer-reviewed studies of 343 gold miners; identified 46.6% exposed to mercury</li>
+  <li>Used Chi-square & bivariate analysis from literature to connect mercury with numbness & rashes</li>
+  <li>Recommended interventions: PPE training, public health campaigns</li>
+  <li>Presented poster and defended results, earning an A in Scientific Research & Communication</li>
+</ul>
+
+<h2>Feb. 2023 – Microbiology Project</h2>
+<p><strong>L.A. Ofori Group, Department of Theoretical and Applied Biology, KNUST<br>
+Topic:</strong> Ubiquitous Presence of Bacteria: An Environmental Exploration</p>
+<ul>
+  <li>Sterilized 40 petri dishes with Nutrient and Potato Dextrose Agar using 70% ethanol</li>
+  <li>Sampled lab air, outdoor air, soil, and plants — 100% of plates showed microbial growth</li>
+  <li>Identified Actinomyces, Staphylococcus, and Aspergillus, confirming environmental diversity</li>
+</ul>
+
+<script>
+  function changeTheme(mode) {
+    if (mode === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  }
+</script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
 </body>
 </html>
