@@ -11,12 +11,14 @@
       --text-color: #333;
       --accent-color: #6B46C1;
       --header-bg: #eae0f8;
+      --menu-bg: #f4ebfa;
     }
     [data-theme="dark"] {
       --bg-color: #1e1e1e;
       --text-color: #ddd;
       --accent-color: #d3bdf0;
       --header-bg: #2e2e3d;
+      --menu-bg: #3a2e4d;
     }
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -63,10 +65,15 @@
       background-color: white;
       font-size: 0.9em;
     }
+    [data-theme="dark"] .mode-switch {
+      background-color: #2e2e3d;
+      color: var(--text-color);
+      border: 1px solid #888;
+    }
     .nav-menu {
       display: none;
       flex-direction: column;
-      background: #f4ebfa;
+      background: var(--menu-bg);
       padding: 1em;
       font-size: 0.85em;
     }
@@ -148,7 +155,6 @@
   </style>
 </head>
 <body>
-
 <header>
   <div class="menu-toggle" onclick="toggleMenu()">
     <i class="fas fa-bars"></i>
@@ -174,7 +180,7 @@
 
 <div class="container">
   <div class="profile">
-    <img src="slide2.jpg" alt="Patience Agyiri Andoh">
+    <img src="slide1.jpg" alt="Patience Agyiri Andoh">
     <h2>Patience Agyiri Andoh</h2>
     <p>Undergraduate Student</p>
     <p>Kwame Nkrumah University of Science and Technology (KNUST), Kumasi - Ghana</p>
@@ -197,7 +203,7 @@
       <li>Led workshops improving capstone grades for 100% of participants</li>
     </ul>
 
-    <h1>Interests</h1>
+    <h1>Research Interests</h1>
     <ul>
       <li>Cancer Biology</li>
       <li>Biology Education</li>
@@ -214,11 +220,7 @@ function toggleMenu() {
 }
 
 function changeTheme(mode) {
-  if (mode === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-  } else {
-    document.documentElement.setAttribute('data-theme', 'light');
-  }
+  document.documentElement.setAttribute('data-theme', mode);
 }
 </script>
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
