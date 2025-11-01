@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 :root{
-  --bg:#E9DEF9; --bg-2:#f6f1fd; --surface:#fff; --text:#141427; --muted:#6b6880;
+  --bg:#E9DEF9; --bg-2:#f6f1fd; --surface:#ffffff; --text:#141427; --muted:#6b6880;
   --line:#e7e2f3; --accent:#6B46C1; --accent2:#22D3EE; --radius:20px;
   --shadow:0 18px 50px rgba(39,18,74,.15);
 }
@@ -17,19 +17,18 @@
   --line:#2a2546; --accent:#B794F4; --accent2:#38E2FF; --shadow:0 22px 60px rgba(0,0,0,.45);
 }
 *{box-sizing:border-box}
-:focus-visible{outline:3px solid var(--accent2);outline-offset:2px}
 body{
   margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);
   background:
     radial-gradient(1100px 600px at -10% -10%, rgba(155,135,245,.25), transparent 60%),
     radial-gradient(900px 500px at 110% 0%, rgba(34,211,238,.18), transparent 55%),
     linear-gradient(180deg,var(--bg),var(--bg-2));
-  min-height:100dvh; display:flex; flex-direction:column;
+  min-height:100dvh;display:flex;flex-direction:column;
 }
 
 /* Header */
 header{
-  position:sticky; top:0; z-index:30;
+  position:sticky;top:0;z-index:30;
   backdrop-filter:saturate(140%) blur(10px);
   background:linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.15));
   border-bottom:1px solid rgba(255,255,255,.35);
@@ -52,33 +51,38 @@ header{
 .theme-pill button{border:0;border-radius:999px;padding:.45rem .85rem;cursor:pointer;font-weight:600;background:transparent;color:#444}
 .theme-pill button.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b1020}
 
-/* Mini menu (dropdown on desktop, sheet on mobile) */
+/* Side Menu (left slide-in) */
 #navMenu{
-  position:absolute; right:1rem; top:62px; width:280px; display:none; flex-direction:column; gap:.5rem;
-  background:var(--surface); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow);
-  padding:.8rem; animation:fadeUp .18s ease both;
+  position:fixed;left:-280px;top:0;height:100%;width:260px;
+  background:var(--surface);border-right:1px solid var(--line);
+  box-shadow:var(--shadow);padding:1.2rem .9rem;display:flex;flex-direction:column;
+  gap:.75rem;transition:left .3s ease;z-index:40;
 }
-#navMenu.open{display:flex}
+#navMenu.open{left:0}
 #navMenu a{
-  display:flex; align-items:center; gap:.55rem;
-  text-decoration:none; color:var(--text); font-weight:700; padding:.55rem .6rem; border-radius:12px;
+  text-decoration:none;color:var(--text);font-weight:700;
+  padding:.55rem .7rem;border-radius:12px;
 }
-#navMenu a:hover{background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#0b1020}
-#scrim{display:none; position:fixed; inset:0; background:rgba(0,0,0,.2); z-index:25}
+#navMenu a:hover{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b1020
+}
+#scrim{
+  position:fixed;inset:0;background:rgba(0,0,0,.3);display:none;z-index:35;
+}
 #scrim.show{display:block}
-
-@media(max-width:767px){
-  #navMenu{left:0; right:0; margin:0 auto; width:min(92vw,420px)}
-}
 
 /* Main */
 .container{
-  max-width:1140px; margin:1rem auto 2.5rem; padding:1.2rem;
-  display:flex; flex-wrap:wrap; gap:1.8rem; flex:1 0 auto;
+  max-width:1140px;margin:1rem auto 2.5rem;padding:1.2rem;
+  display:flex;flex-wrap:wrap;gap:1.8rem;flex:1 0 auto;
 }
-.profile,.bio{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:20px}
-.profile{flex:1 1 100%; text-align:center}
-.profile img{width:170px;height:170px;object-fit:cover;border-radius:50%;border:3px solid #fff;box-shadow:0 12px 28px rgba(0,0,0,.12);margin-top:.3rem}
+.profile,.bio{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:20px;
+}
+.profile{flex:1 1 100%;text-align:center}
+.profile img{width:170px;height:170px;object-fit:cover;border-radius:50%;
+  border:3px solid #fff;box-shadow:0 12px 28px rgba(0,0,0,.12);margin-top:.3rem}
 .profile h2{font-size:1.35rem;margin:.7rem 0 .1rem}
 .profile p{margin:.2rem 0;font-size:.95rem;color:var(--muted)}
 .profile .links{margin-top:.5rem}
@@ -93,77 +97,53 @@ header{
 footer{
   border-top:1px solid var(--line);
   background:linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.05));
-  color:var(--muted);
+  color:var(--muted);text-align:center;
 }
 .footer-wrap{max-width:1140px;margin:auto;padding:1rem}
 .footer-wrap small{font-weight:600}
-
-/* Motion */
-@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
 
 <header>
   <div class="header-bar">
-    <button class="menu-toggle" id="menuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="navMenu">
-      <i class="fas fa-bars"></i>
-    </button>
+    <button class="menu-toggle" id="menuBtn"><i class="fas fa-bars"></i></button>
     <div class="site-title">Patience Agyiri Andoh</div>
     <div class="header-right">
-      <div class="theme-pill" role="group" aria-label="Theme">
+      <div class="theme-pill">
         <button id="lightBtn" class="active" onclick="setTheme('light')">Light</button>
         <button id="darkBtn" onclick="setTheme('dark')">Dark</button>
       </div>
     </div>
-
-    <!-- Mini menu -->
-    <nav id="navMenu" aria-label="Site">
-      <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
-      <a href="education.html"><i class="fa-solid fa-laptop-code"></i> Skills</a>
-      <a href="research.html"><i class="fa-solid fa-flask"></i> Research Projects</a>
-      <a href="work.html"><i class="fa-solid fa-briefcase"></i> Work Experience</a>
-      <a href="leadership.html"><i class="fa-solid fa-people-group"></i> Leadership & Volunteerism</a>
-      <a href="blog.html"><i class="fa-solid fa-book-open"></i> Blogs</a>
-      <a href="community.html"><i class="fa-solid fa-hand-holding-heart"></i> Extra Curricular Activities</a>
-    </nav>
   </div>
 </header>
-<div id="scrim" tabindex="-1"></div>
+
+<nav id="navMenu">
+  <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+  <a href="education.html"><i class="fa-solid fa-laptop-code"></i> Skills</a>
+  <a href="research.html"><i class="fa-solid fa-flask"></i> Research Projects</a>
+  <a href="work.html"><i class="fa-solid fa-briefcase"></i> Work Experience</a>
+  <a href="leadership.html"><i class="fa-solid fa-people-group"></i> Leadership & Volunteerism</a>
+  <a href="blog.html"><i class="fa-solid fa-book-open"></i> Blogs</a>
+  <a href="community.html"><i class="fa-solid fa-hand-holding-heart"></i> Extra Curricular Activities</a>
+</nav>
+<div id="scrim"></div>
 
 <main class="container">
   <div class="profile">
-    <img src="slide4.jpg" alt="Patience Agyiri Andoh" loading="lazy" width="340" height="340">
+    <img src="slide4.jpg" alt="Patience Agyiri Andoh" loading="lazy">
     <h2>Patience Agyiri Andoh</h2>
     <p>Graduate, BSc. Biological Sciences</p>
     <p>Kwame Nkrumah University of Science and Technology (KNUST), Kumasi - Ghana</p>
     <div class="links">
-      <a href="mailto:patienceandoh300@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.linkedin.com/in/patienceagyiriandoh/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:patienceandoh300@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/patienceagyiriandoh/"><i class="fab fa-linkedin"></i></a>
     </div>
   </div>
 
   <div class="bio">
     <h1>About Me</h1>
-    <p>My name is Patience Maame Efua Agyiri Andoh, and I am a 22-year-old graduate of the Kwame Nkrumah University of Science and Technology, where I pursued a bachelor's degree in Biological Sciences. Outside of academics, I enjoy reading, debating, watching movies, and listening to music. Interestingly, I find cooking therapeutic when I’m stressed—even though I used to dislike it.</p>
-    <p>As a woman in STEM, I aspire to become a research scientist specializing in cancer biology. It’s a field that deeply inspires me, and I hope to contribute meaningfully to the global fight against cancer. Fun fact: I absolutely love plantain chips and ice cream—I could live on them forever!</p>
-    <p>I strongly believe in the freedom of emotional expression, as long as it doesn't cause harm to others. I also believe that God is the creator of the universe and sovereign over all things. For me, life is about doing our best and trusting God with the rest.</p>
-
-    <h1>Education</h1>
-    <p><strong>Undergraduate Studies</strong></p>
-    <ul>
-      <li>
-        <strong>Biological Sciences</strong>, <em>Jan. 2022 to Sept. 2025</em>
-        <br>
-        Kwame Nkrumah University of Science and Technology, Kumasi - Ghana
-      </li>
-    </ul>
-
-    <h1>Research Interests</h1>
-    <ul>
-      <li>Cancer Biology</li>
-      <li>Biology Education</li>
-    </ul>
+    <p>My name is Patience Maame Efua Agyiri Andoh, and I am a 22-year-old graduate of the Kwame Nkrumah University of Science and Technology, where I pursued a bachelor's degree in Biological Sciences...</p>
   </div>
 </main>
 
@@ -174,7 +154,7 @@ footer{
 </footer>
 
 <script>
-/* Theme (shared) */
+/* Theme Sync */
 function setTheme(mode){
   const m = mode==='dark' ? 'dark' : 'light';
   document.documentElement.setAttribute('data-theme', m);
@@ -187,20 +167,18 @@ function setTheme(mode){
   setTheme(saved);
 })();
 
-/* Mini menu behaviour (desktop + mobile) */
-const btn = document.getElementById('menuBtn');
-const menu = document.getElementById('navMenu');
-const scrim = document.getElementById('scrim');
+/* Left-side menu */
+const menuBtn=document.getElementById('menuBtn');
+const navMenu=document.getElementById('navMenu');
+const scrim=document.getElementById('scrim');
 
-function openMenu(){menu.classList.add('open'); btn.setAttribute('aria-expanded','true'); scrim.classList.add('show');}
-function closeMenu(){menu.classList.remove('open'); btn.setAttribute('aria-expanded','false'); scrim.classList.remove('show');}
-function toggleMenu(){ menu.classList.contains('open') ? closeMenu() : openMenu(); }
-
-btn.addEventListener('click', toggleMenu);
-scrim.addEventListener('click', closeMenu);
-document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeMenu(); });
-document.addEventListener('click', e=>{
-  if(!menu.contains(e.target) && e.target!==btn && !btn.contains(e.target)) closeMenu();
+menuBtn.addEventListener('click',()=>{
+  navMenu.classList.toggle('open');
+  scrim.classList.toggle('show');
+});
+scrim.addEventListener('click',()=>{
+  navMenu.classList.remove('open');
+  scrim.classList.remove('show');
 });
 </script>
 
