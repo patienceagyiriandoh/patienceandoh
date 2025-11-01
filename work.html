@@ -3,143 +3,262 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Work Experience - Patience Agyiri Andoh</title>
+<title>Patience Agyiri Andoh</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 /* ===== Lilac theme ===== */
 :root{
-  --bg:#E9DEF9;
-  --bg-2:#f6f1fd;
-  --surface:#ffffff;
-  --text:#141427;
-  --muted:#6b6880;
-  --line:#e7e2f3;
-  --accent:#6B46C1;
-  --accent2:#22D3EE;
-  --radius:20px;
+  --bg:#E9DEF9; --bg-2:#f6f1fd; --surface:#ffffff; --text:#141427; --muted:#6b6880;
+  --line:#e7e2f3; --accent:#6B46C1; --accent2:#22D3EE; --radius:20px;
   --shadow:0 18px 50px rgba(39,18,74,.15);
 }
 [data-theme="dark"]{
-  --bg:#171528;
-  --bg-2:#1f1b36;
-  --surface:#1f1d33;
-  --text:#f2edff;
-  --muted:#bfb8d8;
-  --line:#2a2546;
-  --accent:#B794F4;
-  --accent2:#38E2FF;
-  --shadow:0 22px 60px rgba(0,0,0,.45);
+  --bg:#171528; --bg-2:#1f1b36; --surface:#1f1d33; --text:#f2edff; --muted:#bfb8d8;
+  --line:#2a2546; --accent:#B794F4; --accent2:#38E2FF; --shadow:0 22px 60px rgba(0,0,0,.45);
 }
 *{box-sizing:border-box}
 body{
   margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);
   background:
-    radial-gradient(1000px 560px at -10% -10%, rgba(155,135,245,.25), transparent 60%),
-    radial-gradient(820px 480px at 110% 0%, rgba(34,211,238,.18), transparent 55%),
+    radial-gradient(1100px 600px at -10% -10%, rgba(155,135,245,.25), transparent 60%),
+    radial-gradient(900px 520px at 110% 0%, rgba(34,211,238,.18), transparent 55%),
     linear-gradient(180deg,var(--bg),var(--bg-2));
-  min-height:100dvh;
+  min-height:100dvh;display:flex;flex-direction:column;
 }
 
 /* ===== Header (glassy) ===== */
 header{
-  position:sticky;top:0;z-index:10;
+  position:sticky;top:0;z-index:40;
   backdrop-filter:saturate(140%) blur(10px);
   background:linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.15));
   border-bottom:1px solid rgba(255,255,255,.35);
 }
 .header-bar{
-  max-width:1100px;margin:auto;padding:.8rem 1rem;
+  max-width:1140px;margin:auto;padding:.8rem 1rem;
   display:flex;align-items:center;gap:12px;flex-wrap:wrap;
 }
-.back-btn{
+.menu-btn{
   width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;
   border-radius:14px;background:rgba(255,255,255,.6);
-  color:var(--accent);text-decoration:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);
+  color:var(--accent);border:none;cursor:pointer;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);
 }
-.header-right{margin-left:auto}
-.mode-switch{
-  padding:.45rem .7rem;border-radius:999px;border:1px solid var(--line);
-  background:rgba(255,255,255,.7);backdrop-filter:blur(6px);
-  font-weight:600;color:var(--text)
+.site-title{font-weight:800;font-size:1.1rem;color:var(--accent)}
+.header-right{margin-left:auto;display:flex;align-items:center}
+
+/* Theme pill */
+.theme-pill{
+  display:flex;gap:2px;padding:4px;border-radius:999px;
+  background:rgba(255,255,255,.7);backdrop-filter:blur(8px);
+  box-shadow:0 10px 25px rgba(0,0,0,.12)
+}
+.theme-pill button{
+  border:0;border-radius:999px;padding:.45rem .85rem;cursor:pointer;
+  font-weight:600;background:transparent;color:#444
+}
+.theme-pill button.active{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#0b1020
 }
 
+/* ===== Left drawer nav ===== */
+#scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;z-index:45}
+#scrim.show{display:block}
+.drawer{
+  position:fixed;left:-288px;top:0;height:100%;width:276px;z-index:50;
+  background:var(--surface);border-right:1px solid var(--line);
+  box-shadow:var(--shadow);padding:16px 12px;transition:left .28s ease;
+  display:flex;flex-direction:column;gap:.5rem;
+}
+.drawer.open{left:0}
+.drawer-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem}
+.drawer-title{font-weight:800;color:var(--accent)}
+.drawer-close{background:transparent;border:none;font-size:1.1rem;cursor:pointer;color:var(--text)}
+.drawer a{
+  text-decoration:none;color:var(--text);font-weight:700;border-radius:12px;
+  padding:.6rem .7rem;display:flex;gap:.55rem;align-items:center;
+}
+.drawer a:hover{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b1020}
+
 /* ===== Main ===== */
-main{max-width:950px;margin:1rem auto 2.4rem;padding:0 1rem}
+main{max-width:1140px;margin:1rem auto 2.4rem;padding:0 1rem;flex:1 0 auto}
+.grid{display:grid;grid-template-columns:1fr;gap:1.4rem}
 .card{
   background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
   box-shadow:var(--shadow);padding:24px 22px;animation:fadeUp .45s ease both
 }
-h1{
-  color:var(--accent);font-size:1.9rem;margin:6px 0 14px;text-align:left
+
+/* Profile card */
+.profile{text-align:center}
+.profile img{
+  width:170px;height:170px;object-fit:cover;border-radius:50%;
+  border:3px solid #fff;box-shadow:0 12px 28px rgba(0,0,0,.12);margin-top:.3rem
 }
-h2{
-  color:var(--accent);font-size:1.15rem;margin:22px 0 6px
+.profile h2{font-size:1.35rem;margin:.7rem 0 .1rem}
+.profile p{margin:.2rem 0;font-size:.95rem;color:var(--muted)}
+.profile .links{margin-top:.5rem}
+.profile .links a{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:42px;height:42px;margin:0 .25rem;border-radius:12px;text-decoration:none;
+  color:#0b1020;background:linear-gradient(135deg,var(--accent),var(--accent2));
+  box-shadow:0 10px 24px rgba(39,18,74,.22)
 }
-p,li{line-height:1.65;font-size:1rem}
-ul{padding-left:1.1rem}
-hr{border:0;border-top:1px solid var(--line);margin:18px 0}
+
+/* Bio card */
+.bio h1{color:var(--accent);font-size:1.4rem;margin:.2rem 0 .6rem}
+.bio p,.bio ul{font-size:1rem;line-height:1.7}
+.bio ul{padding-left:1.1rem}
+
+/* Quick links */
+.links-list a{
+  display:inline-flex;align-items:center;gap:.5rem;margin:.35rem .35rem 0 0;
+  padding:.55rem .75rem;border-radius:12px;text-decoration:none;font-weight:700;
+  color:#0b1020;background:linear-gradient(135deg,var(--accent),var(--accent2));
+}
+
+/* Responsive */
+@media(min-width:900px){
+  .grid{grid-template-columns:32% 1fr}
+}
+
+/* Footer */
+footer{
+  border-top:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.05));
+  color:var(--muted);text-align:center;
+}
+.footer-wrap{max-width:1140px;margin:auto;padding:1rem}
+.footer-wrap small{font-weight:600}
 
 /* Motion */
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-@media (max-width:600px){
-  .header-bar{gap:.5rem}
-}
 @media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
 </style>
 </head>
 <body>
 
+<!-- Header -->
 <header>
   <div class="header-bar">
-    <a href="javascript:history.back()" class="back-btn" aria-label="Back"><i class="fas fa-arrow-left"></i></a>
+    <button id="menuBtn" class="menu-btn" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+    <div class="site-title">Patience Agyiri Andoh</div>
     <div class="header-right">
-      <!-- class added so the script can sync the value on load across pages -->
-      <select class="mode-switch" onchange="changeTheme(this.value)">
-        <option value="light">Light</option>
-        <option value="dark">Dark</option>
-      </select>
+      <div class="theme-pill" role="group" aria-label="Theme">
+        <button id="lightBtn" class="active" onclick="setTheme('light')">Light</button>
+        <button id="darkBtn" onclick="setTheme('dark')">Dark</button>
+      </div>
     </div>
   </div>
 </header>
 
+<!-- Left drawer -->
+<aside id="drawer" class="drawer" aria-hidden="true" aria-label="Site navigation">
+  <div class="drawer-header">
+    <div class="drawer-title">Menu</div>
+    <button id="closeBtn" class="drawer-close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <a href="homepage.html"><i class="fa-solid fa-house"></i><span>Home</span></a>
+  <a href="skills.html"><i class="fa-solid fa-laptop-code"></i><span>Skills</span></a>
+  <a href="research.html"><i class="fa-solid fa-flask"></i><span>Research Projects</span></a>
+  <a href="work.html"><i class="fa-solid fa-briefcase"></i><span>Work Experience</span></a>
+  <a href="leadership.html"><i class="fa-solid fa-people-group"></i><span>Leadership & Volunteerism</span></a>
+  <a href="blog.html"><i class="fa-solid fa-book-open"></i><span>Blogs</span></a>
+  <a href="community.html"><i class="fa-solid fa-hand-holding-heart"></i><span>Extra Curricular Activities</span></a>
+</aside>
+<div id="scrim" tabindex="-1"></div>
+
+<!-- Main -->
 <main>
-  <section class="card">
-    <!-- ===== CONTENT UNCHANGED ===== -->
-    <h1>Work Experience</h1>
+  <div class="grid">
+    <!-- Profile -->
+    <section class="card profile">
+      <img src="slide4.jpg" alt="Patience Agyiri Andoh">
+      <h2>Patience Agyiri Andoh</h2>
+      <p>Undergraduate Student</p>
+      <p>Kwame Nkrumah University of Science and Technology (KNUST), Kumasi — Ghana</p>
+      <div class="links">
+        <a href="mailto:patienceandoh300@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/patienceagyiriandoh/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <div class="links-list" style="margin-top:12px">
+        <a href="skills.html"><i class="fa-solid fa-laptop-code"></i> Skills</a>
+        <a href="research.html"><i class="fa-solid fa-flask"></i> Research</a>
+        <a href="work.html"><i class="fa-solid fa-briefcase"></i> Work</a>
+      </div>
+    </section>
 
-    <h2>Sept. 2024 – Dec. 2024</h2>
-    <p><strong>Quality Control Intern, Kinapharma Company Limited, Ghana</strong></p>
-    <ul>
-      <li>Tested raw materials (APIs, excipients, packaging materials) using HPLC, GC, and FTIR to verify identity, purity, and potency, ensuring compliance with USP, EP, and JP standards, resulting in the approval of 100+ batches monthly</li>
-      <li>Conducted microbiological and quantitative analyses (sterility, microbial limits, HPLC, titration, Karl Fischer) on raw materials to detect contaminants, achieving a 98% compliance rate with safety and quality standards</li>
-      <li>Documented and evaluated test results to ensure regulatory compliance, with 95% of raw materials passing purity, potency, and impurity tests, supporting reliable product development and supply chain continuity</li>
-    </ul>
+    <!-- Bio -->
+    <section class="card bio">
+      <h1>About Me</h1>
+      <p>My name is Patience Maame Efua Agyiri Andoh, and I am a 22-year-old graduate of the Kwame Nkrumah University of Science and Technology, where I pursued a bachelor's degree in Biological Sciences. Outside of academics, I enjoy reading, debating, watching movies, and listening to music. Interestingly, I find cooking therapeutic when I’m stressed—even though I used to dislike it.</p>
+      <p>As a woman in STEM, I aspire to become a research scientist specializing in cancer biology. It’s a field that deeply inspires me, and I hope to contribute meaningfully to the global fight against cancer. Fun fact: I absolutely love plantain chips and ice cream—I could live on them forever!</p>
+      <p>I strongly believe in the freedom of emotional expression, as long as it doesn't cause harm to others. I also believe that God is the creator of the universe and sovereign over all things. For me, life is about doing our best and trusting God with the rest.</p>
 
-    <h2>Oct. 2023 – Dec. 2023</h2>
-    <p><strong>Laboratory Services Intern, Holy Trinity Medical Center, Accra-Ghana</strong></p>
-    <ul>
-      <li>Mastered blood sample collection techniques, ensuring contamination-free samples and achieving zero patient infections across over 200 sample collections</li>
-      <li>Analyzed blood samples using a centrifuge and automated hematology analyzer, providing accurate blood cell counts and hemoglobin levels, contributing to the completion of 150+ tests per month</li>
-      <li>Collaborated with a supervising doctor on a research project, contributing to data collection and analysis on health risk factors for chronic diseases, supporting the identification of 3 key risk factors in a study of 100 young adults</li>
-    </ul>
-    <!-- ===== CONTENT UNCHANGED ===== -->
-  </section>
+      <h1>Education</h1>
+      <p><strong>Undergraduate Studies</strong></p>
+      <ul>
+        <li>
+          <strong>Biological Sciences</strong>, <em>Jan. 2022 to Sept. 2025</em><br>
+          Kwame Nkrumah University of Science and Technology, Kumasi — Ghana
+        </li>
+      </ul>
+
+      <h1>Research Interests</h1>
+      <ul>
+        <li>Cancer Biology</li>
+        <li>Biology Education</li>
+      </ul>
+    </section>
+  </div>
 </main>
 
+<!-- Footer -->
+<footer>
+  <div class="footer-wrap">
+    <small>© 2025 Patience Agyiri Andoh</small>
+  </div>
+</footer>
+
 <script>
-function changeTheme(mode){
-  document.documentElement.setAttribute('data-theme', mode);
-  localStorage.setItem('theme', mode); // persist across pages
+/* Theme sync across pages */
+function setTheme(mode){
+  const m = mode === 'dark' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', m);
+  localStorage.setItem('theme', m);
+  const lightBtn = document.getElementById('lightBtn');
+  const darkBtn  = document.getElementById('darkBtn');
+  if(lightBtn && darkBtn){
+    lightBtn.classList.toggle('active', m==='light');
+    darkBtn.classList.toggle('active',  m==='dark');
+  }
 }
-document.addEventListener('DOMContentLoaded', ()=>{
-  // apply saved theme on every page load
+(function initTheme(){
   const saved = localStorage.getItem('theme') || 'light';
-  document.documentElement.setAttribute('data-theme', saved);
-  // sync dropdown to saved theme
-  const sel = document.querySelector('.mode-switch');
-  if(sel) sel.value = saved;
-});
+  setTheme(saved);
+})();
+
+/* Drawer open/close */
+const drawer  = document.getElementById('drawer');
+const scrim   = document.getElementById('scrim');
+const menuBtn = document.getElementById('menuBtn');
+const closeBtn= document.getElementById('closeBtn');
+
+function openDrawer(){
+  drawer.classList.add('open');
+  scrim.classList.add('show');
+  drawer.setAttribute('aria-hidden','false');
+}
+function closeDrawer(){
+  drawer.classList.remove('open');
+  scrim.classList.remove('show');
+  drawer.setAttribute('aria-hidden','true');
+}
+menuBtn.addEventListener('click', openDrawer);
+closeBtn.addEventListener('click', closeDrawer);
+scrim.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeDrawer(); });
+drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeDrawer));
 </script>
 
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
