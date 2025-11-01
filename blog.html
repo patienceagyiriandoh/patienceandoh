@@ -10,28 +10,13 @@
 <style>
 :root{
   /* Lilac theme */
-  --bg:#E9DEF9;
-  --bg-2:#f5effd;
-  --card:#ffffff;
-  --text:#121225;
-  --muted:#6b6880;
-  --line:#e8e4f4;
-  --badge:#3b3b4f;
-  --accent:#6B46C1;
-  --accent2:#22D3EE;
-  --radius:22px;
-  --shadow:0 18px 55px rgba(39,18,74,.15);
+  --bg:#E9DEF9; --bg-2:#f5effd; --card:#ffffff; --text:#121225; --muted:#6b6880;
+  --line:#e8e4f4; --badge:#3b3b4f; --accent:#6B46C1; --accent2:#22D3EE;
+  --radius:22px; --shadow:0 18px 55px rgba(39,18,74,.15);
 }
 [data-theme="dark"]{
-  --bg:#171528;
-  --bg-2:#1f1b36;
-  --card:#1f1d33;
-  --text:#f2edff;
-  --muted:#bfb8d8;
-  --line:#2a2546;
-  --badge:#2b2a3d;
-  --accent:#B794F4;
-  --accent2:#38E2FF;
+  --bg:#171528; --bg-2:#1f1b36; --card:#1f1d33; --text:#f2edff; --muted:#bfb8d8;
+  --line:#2a2546; --badge:#2b2a3d; --accent:#B794F4; --accent2:#38E2FF;
   --shadow:0 22px 60px rgba(0,0,0,.45);
 }
 
@@ -42,29 +27,28 @@ body{
     radial-gradient(1200px 600px at -10% -10%, rgba(155,135,245,.25), transparent 60%),
     radial-gradient(900px 500px at 110% 0%, rgba(34,211,238,.18), transparent 55%),
     linear-gradient(180deg,var(--bg),var(--bg-2));
-  min-height:100dvh;
+  min-height:100dvh;display:flex;flex-direction:column;
 }
 
-/* Glass header */
+/* Header */
 header{
-  position:sticky;top:0;z-index:10;
+  position:sticky;top:0;z-index:40;
   backdrop-filter:saturate(140%) blur(10px);
   background:linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.15));
   border-bottom:1px solid rgba(255,255,255,.35);
 }
 .bar{max-width:1100px;margin:auto;padding:.8rem 1rem;display:flex;gap:12px;align-items:center}
-.back{
-  width:42px;height:42px;display:inline-flex;align-items:center;justify-content:center;
-  color:var(--text);text-decoration:none;border-radius:14px;
-  background:rgba(255,255,255,.45);box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);
-  transition:transform .2s ease; 
+.menu-btn{
+  width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;
+  border-radius:14px;background:rgba(255,255,255,.6);
+  color:var(--accent);border:none;cursor:pointer;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);
 }
-.back:hover{transform:translateX(-3px)}
+.title{font-weight:800;color:var(--accent)}
 .spacer{flex:1}
 
 /* Theme pill */
 .theme-pill{
-  position:fixed;top:12px;right:12px;z-index:20;
   display:flex;gap:2px;padding:4px;border-radius:999px;
   background:rgba(255,255,255,.7);backdrop-filter:blur(8px);
   box-shadow:0 10px 25px rgba(0,0,0,.12);
@@ -78,11 +62,30 @@ header{
   color:#0b1020;
 }
 
+/* Left drawer nav */
+#scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;z-index:45}
+#scrim.show{display:block}
+.drawer{
+  position:fixed;left:-288px;top:0;height:100%;width:276px;z-index:50;
+  background:var(--card);border-right:1px solid var(--line);
+  box-shadow:var(--shadow);padding:16px 12px;transition:left .28s ease;
+  display:flex;flex-direction:column;gap:.5rem;
+}
+.drawer.open{left:0}
+.drawer-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem}
+.drawer-title{font-weight:800;color:var(--accent)}
+.drawer-close{background:transparent;border:none;font-size:1.1rem;cursor:pointer;color:var(--text)}
+.drawer a{
+  text-decoration:none;color:var(--text);font-weight:700;border-radius:12px;
+  padding:.6rem .7rem;display:flex;gap:.55rem;align-items:center;
+}
+.drawer a:hover{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b1020}
+
 /* Page */
-main{max-width:1100px;margin:0 auto;padding:1.2rem 1rem 2.2rem}
+main{max-width:1100px;margin:0 auto;padding:1.2rem 1rem 2.2rem;flex:1 0 auto}
 h1{font-size:1.95rem;margin:0 0 .9rem;color:var(--accent)}
 
-/* Card list */
+/* Cards */
 .stack{display:grid;gap:18px}
 .card{
   background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
@@ -94,20 +97,12 @@ h1{font-size:1.95rem;margin:0 0 .9rem;color:var(--accent)}
 .thumb{
   position:relative; border-bottom:1px solid var(--line);
   border-radius:calc(var(--radius) - 2px) calc(var(--radius) - 2px) 0 0;
-  overflow:hidden;
-  /* gradient image feel */
-  background:
-    linear-gradient(120deg, rgba(155,135,245,.35), rgba(34,211,238,.28)),
-    linear-gradient(180deg, rgba(255,255,255,.8), rgba(255,255,255,0)),
-    url('https://images.unsplash.com/photo-1520975922131-c3c81cd1ccd1?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
-  min-height:150px;
+  overflow:hidden; min-height:150px; background:linear-gradient(120deg, rgba(155,135,245,.18), rgba(34,211,238,.18));
 }
-.thumb.debate{
-  background:
-    linear-gradient(120deg, rgba(107,70,193,.35), rgba(6,182,212,.3)),
-    url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
+.thumb img{
+  display:block; width:100%; height:220px; object-fit:cover;
+  transform:translateZ(0);
 }
-
 .badge{
   position:absolute; left:14px; bottom:14px;
   background:var(--badge); color:#fff; font-size:.8rem; font-weight:600;
@@ -128,45 +123,61 @@ h1{font-size:1.95rem;margin:0 0 .9rem;color:var(--accent)}
 }
 .cta:hover{transform:translateY(-2px)}
 
-/* Responsive radius for mobile feel */
-@media (max-width:560px){
-  .card{border-radius:18px}
+/* Footer */
+footer{
+  border-top:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.05));
+  color:var(--muted);text-align:center;
 }
+.footer-wrap{max-width:1100px;margin:auto;padding:1rem}
+.footer-wrap small{font-weight:600}
 
 /* Motion */
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .card{animation:fadeUp .45s ease both}
 .card:nth-child(2){animation-delay:.06s}
-
-@media (prefers-reduced-motion:reduce){
-  *{animation:none !important; transition:none !important}
-}
+@media (prefers-reduced-motion:reduce){*{animation:none !important; transition:none !important}}
 </style>
 </head>
 <body>
 
-<!-- floating theme pill -->
-<div class="theme-pill" role="group" aria-label="Theme">
-  <button id="lightBtn" class="active" onclick="setTheme('light')">Light</button>
-  <button id="darkBtn" onclick="setTheme('dark')">Dark</button>
-</div>
-
 <header>
   <div class="bar">
-    <a class="back" href="javascript:history.back()" aria-label="Back">
-      <i class="fa-solid fa-arrow-left"></i>
-    </a>
+    <button id="menuBtn" class="menu-btn" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+    <div class="title">Blog</div>
     <div class="spacer"></div>
+    <div class="theme-pill" role="group" aria-label="Theme">
+      <button id="lightBtn" class="active" onclick="setTheme('light')">Light</button>
+      <button id="darkBtn" onclick="setTheme('dark')">Dark</button>
+    </div>
   </div>
 </header>
+
+<!-- Left drawer -->
+<aside id="drawer" class="drawer" aria-hidden="true" aria-label="Site navigation">
+  <div class="drawer-header">
+    <div class="drawer-title">Menu</div>
+    <button id="closeBtn" class="drawer-close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <a href="homepage.html"><i class="fa-solid fa-house"></i><span>Home</span></a>
+  <a href="skills.html"><i class="fa-solid fa-laptop-code"></i><span>Skills</span></a>
+  <a href="research.html"><i class="fa-solid fa-flask"></i><span>Research Projects</span></a>
+  <a href="work.html"><i class="fa-solid fa-briefcase"></i><span>Work Experience</span></a>
+  <a href="leadership.html"><i class="fa-solid fa-people-group"></i><span>Leadership & Volunteerism</span></a>
+  <a href="blog.html"><i class="fa-solid fa-book-open"></i><span>Blogs</span></a>
+  <a href="community.html"><i class="fa-solid fa-hand-holding-heart"></i><span>Extra Curricular Activities</span></a>
+</aside>
+<div id="scrim" tabindex="-1"></div>
 
 <main>
   <h1>Explore my writing</h1>
 
   <section class="stack">
-    <!-- Card 1 -->
+    <!-- Card 1 — Cancer Biology Series (uses your own image file) -->
     <article class="card">
       <div class="thumb">
+        <!-- Put your image in /assets/cancer-card.jpg or change the path below -->
+        <img src="assets/cancer-card.jpg" alt="Cancer Biology visual" onerror="this.style.display='none'">
         <span class="badge"><i class="fa-solid fa-flask"></i> Cancer Biology</span>
       </div>
       <div class="body">
@@ -178,9 +189,10 @@ h1{font-size:1.95rem;margin:0 0 .9rem;color:var(--accent)}
       </div>
     </article>
 
-    <!-- Card 2 -->
+    <!-- Card 2 — Debate -->
     <article class="card">
-      <div class="thumb debate">
+      <div class="thumb">
+        <img src="assets/debate-card.jpg" alt="Debate and notes" onerror="this.style.display='none'">
         <span class="badge"><i class="fa-solid fa-microphone-lines"></i> Debate &amp; Notes</span>
       </div>
       <div class="body">
@@ -194,17 +206,51 @@ h1{font-size:1.95rem;margin:0 0 .9rem;color:var(--accent)}
   </section>
 </main>
 
+<footer>
+  <div class="footer-wrap">
+    <small>© 2025 Patience Agyiri Andoh</small>
+  </div>
+</footer>
+
 <script>
+/* Theme sync */
 function setTheme(mode){
-  document.documentElement.setAttribute('data-theme', mode === 'dark' ? 'dark' : 'light');
-  localStorage.setItem('theme', mode);
-  document.getElementById('lightBtn').classList.toggle('active', mode==='light');
-  document.getElementById('darkBtn').classList.toggle('active', mode==='dark');
+  const m = mode === 'dark' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', m);
+  localStorage.setItem('theme', m);
+  const lightBtn = document.getElementById('lightBtn');
+  const darkBtn  = document.getElementById('darkBtn');
+  if(lightBtn && darkBtn){
+    lightBtn.classList.toggle('active', m==='light');
+    darkBtn.classList.toggle('active',  m==='dark');
+  }
 }
 (function initTheme(){
   const saved = localStorage.getItem('theme') || 'light';
   setTheme(saved);
 })();
+
+/* Drawer */
+const drawer  = document.getElementById('drawer');
+const scrim   = document.getElementById('scrim');
+const menuBtn = document.getElementById('menuBtn');
+const closeBtn= document.getElementById('closeBtn');
+
+function openDrawer(){
+  drawer.classList.add('open');
+  scrim.classList.add('show');
+  drawer.setAttribute('aria-hidden','false');
+}
+function closeDrawer(){
+  drawer.classList.remove('open');
+  scrim.classList.remove('show');
+  drawer.setAttribute('aria-hidden','true');
+}
+menuBtn.addEventListener('click', openDrawer);
+closeBtn.addEventListener('click', closeDrawer);
+scrim.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeDrawer(); });
+drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeDrawer));
 </script>
 </body>
 </html>
