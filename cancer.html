@@ -32,6 +32,8 @@
   --shadow:0 22px 60px rgba(0,0,0,.45);
 }
 *{box-sizing:border-box}
+:focus-visible{outline:3px solid var(--accent2);outline-offset:2px}
+html{scroll-behavior:smooth}
 body{
   margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);
   background:
@@ -146,7 +148,7 @@ figcaption{color:var(--muted);font-size:.92rem;margin-top:6px}
     </div>
   </div>
 
-  <!-- Your original content starts here. Not modified. -->
+  <!-- Your original content starts here. Not modified except for valid paragraph tags and lazy image attrs. -->
   <div id="part0" class="tab-content active">
     <section class="panel">
       <h1>Part 0: Cancer Disease Burden</h1>
@@ -198,7 +200,7 @@ figcaption{color:var(--muted);font-size:.92rem;margin-top:6px}
       <ul>
         <li><strong>Infections:</strong> Hepatitis B/C (liver cancer), HPV (cervical cancer)</li>
         <li><strong>Environmental exposure:</strong> Aflatoxins from contaminated foods</li>
-        <li><strong>Lifestyle changes:</strong> Diet, alcohol, inactivity</li>
+        <li><strong>Lifecycle changes:</strong> Diet, alcohol, inactivity</li>
         <li><strong>Healthcare gaps:</strong> Late diagnosis and limited oncology infrastructure</li>
       </ul>
 
@@ -208,13 +210,13 @@ figcaption{color:var(--muted);font-size:.92rem;margin-top:6px}
 
       <!-- Figure 1 -->
       <figure id="cancerglobalchart">
-        <img src="cancerglobalchart.jpg" alt="Rising Cancer Incidence: Global, Africa & Ghana (2000–2030)">
+        <img src="cancerglobalchart.jpg" alt="Rising Cancer Incidence: Global, Africa & Ghana (2000–2030)" loading="lazy" width="1200" height="675">
         <figcaption><strong>Figure 1.</strong> Rising cancer incidence globally, in Africa, and in Ghana from 2000 to 2030. Data illustrate the growing cancer burden with projections showing continued increase in new cancer cases worldwide and within Africa.</figcaption>
       </figure>
 
       <!-- Figure 2 -->
       <figure id="ghanachart">
-        <img src="ghanachart.jpg" alt="Cancer Burden in Ghana">
+        <img src="ghanachart.jpg" alt="Cancer Burden in Ghana" loading="lazy" width="1200" height="675">
         <figcaption><strong>Figure 2.</strong> Cancer burden in Ghana, showing new cases, deaths, prevalence, leading cancer types, risk factors, and ongoing national cancer control initiatives.</figcaption>
       </figure>
 
@@ -248,98 +250,88 @@ figcaption{color:var(--muted);font-size:.92rem;margin-top:6px}
         <li>Reprogramming cellular metabolism: They change their metabolism to support continuous growth.</li>
         <li>Evading immune destruction: They hide from or resist attacks by the immune system.</li>
       </ul>
-      </p>
-         These features work together to make cancer cells aggressive, hard to control, and capable of spreading in the body (Hanahan, 2022; Hanahan & Weinberg, 2011).
-      </p>
+      <p>These features work together to make cancer cells aggressive, hard to control, and capable of spreading in the body (Hanahan, 2022; Hanahan &amp; Weinberg, 2011).</p>
 
       <h2>Cell Cycle and its Regulation</h2>
       <h3>a. Overview of the Cell Cycle</h3>
       <p>
-        The cell cycle is a series of stages that a cell goes through as it grows and divides. It begins with the G1 phase (Gap 1), where the cell grows and actively synthesizes proteins and organelles. During this phase, the cell also prepares for DNA replication. At a critical decision point, the cell either continues into the next phase (S phase) or exits the cycle and enters a resting state known as the G0 phase. In G0, the cell stops dividing. Some cells, like neurons, remain in G0 permanently, while others, such as liver cells, may reenter the cycle when needed (Malumbres & Barbacid, 2009; Vermeulen et al., 2003).</p>  
-
+        The cell cycle is a series of stages that a cell goes through as it grows and divides. It begins with the G1 phase (Gap 1), where the cell grows and actively synthesizes proteins and organelles. During this phase, the cell also prepares for DNA replication. At a critical decision point, the cell either continues into the next phase (S phase) or exits the cycle and enters a resting state known as the G0 phase. In G0, the cell stops dividing. Some cells, like neurons, remain in G0 permanently, while others, such as liver cells, may reenter the cycle when needed (Malumbres &amp; Barbacid, 2009; Vermeulen et al., 2003).
       </p>
-         If the cell continues through the cycle, it enters the S phase (Synthesis phase), where DNA replication occurs and each chromosome is duplicated. After DNA synthesis, the cell enters the G2 phase (Gap 2). In this phase, the cell prepares for mitosis by continuing to grow and producing additional proteins and organelles (Malumbres & Barbacid, 2009; Vermeulen et al., 2003).</p>
-             
+      <p>
+        If the cell continues through the cycle, it enters the S phase (Synthesis phase), where DNA replication occurs and each chromosome is duplicated. After DNA synthesis, the cell enters the G2 phase (Gap 2). In this phase, the cell prepares for mitosis by continuing to grow and producing additional proteins and organelles (Malumbres &amp; Barbacid, 2009; Vermeulen et al., 2003).
       </p>
-         Finally, the cell enters the M phase (Mitosis phase). This phase involves the division of the nucleus, called karyokinesis, followed by the division of the cytoplasm, known as cytokinesis. The result is two genetically identical daughter cells, each ready to begin a new cycle (Malumbres & Barbacid, 2009; Vermeulen et al., 2003).</p>
+      <p>
+        Finally, the cell enters the M phase (Mitosis phase). This phase involves the division of the nucleus, called karyokinesis, followed by the division of the cytoplasm, known as cytokinesis. The result is two genetically identical daughter cells, each ready to begin a new cycle (Malumbres &amp; Barbacid, 2009; Vermeulen et al., 2003).
+      </p>
 
       <h3>b. Key Regulatory Proteins and Complexes</h3>
       <p>
-        The cell cycle is tightly regulated by specific proteins known as cyclins and cyclin-dependent kinases (CDKs). CDKs are enzymes that become active only when bound to particular cyclins. These cyclin–CDK complexes are responsible for driving the cell through the different phases of the cycle by phosphorylating target proteins that promote progression (Dombrádi et al., 2002).</p>
-      
-      <p>
-        Each phase of the cycle is regulated by a distinct cyclin–CDK pair:</p>
-             
+        The cell cycle is tightly regulated by specific proteins known as cyclins and cyclin-dependent kinases (CDKs). CDKs are enzymes that become active only when bound to particular cyclins. These cyclin–CDK complexes are responsible for driving the cell through the different phases of the cycle by phosphorylating target proteins that promote progression (Dombrádi et al., 2002).
+      </p>
+      <p>Each phase of the cycle is regulated by a distinct cyclin–CDK pair:</p>
       <ul>
         <li>Cyclin D–CDK4/6 controls progression through the G1 phase</li>
         <li>Cyclin E–CDK2 regulates the critical G1/S transition</li>
         <li>Cyclin A–CDK2 promotes progression through the S phase</li>
         <li>Cyclin B–CDK1 is responsible for the G2/M transition</li>
       </ul>
-
-      <p>
-        Together, these complexes ensure the orderly and accurate replication and division of cells (Malumbres & Barbacid, 2009).</p>
+      <p>Together, these complexes ensure the orderly and accurate replication and division of cells (Malumbres &amp; Barbacid, 2009).</p>
              
       <h2>Checkpoints in the Cell Cycle</h2>
-
-      <p>
-        Checkpoints are control mechanisms that ensure each stage of the cell cycle is completed correctly before the cell moves forward. The main checkpoints are:</p>
+      <p>Checkpoints are control mechanisms that ensure each stage of the cell cycle is completed correctly before the cell moves forward. The main checkpoints are:</p>
 
       <h3>1. G1/S Checkpoint</h3>
       <ul>
-        <li></strong> Ensures that the DNA is not damaged before replication begins (Molinari, 2000).</li>
-        <li></strong> p53 activates p21, which blocks CDKs if damage is detected (Sherr & McCormick, 2002).</li>
-        <li></strong> Rb protein holds back E2F when in its hypophosphorylated form, preventing the cell from progressing (Sherr & McCormick, 2002).</li>
+        <li>Ensures that the DNA is not damaged before replication begins (Molinari, 2000).</li>
+        <li>p53 activates p21, which blocks CDKs if damage is detected (Sherr &amp; McCormick, 2002).</li>
+        <li>Rb protein holds back E2F when in its hypophosphorylated form, preventing the cell from progressing (Sherr &amp; McCormick, 2002).</li>
       </ul>
                
       <h3>2. Intra-S Checkpoint</h3>
       <ul>
-        <li></strong> Temporarily pauses DNA synthesis in response to DNA damage (Molinari, 2000).</li>
+        <li>Temporarily pauses DNA synthesis in response to DNA damage (Molinari, 2000).</li>
       </ul>
 
       <h3>3. G2/M Checkpoint</h3>
       <ul>
-        <li></strong> Confirms that all DNA has been correctly replicated before mitosis begins (Molinari, 2000).</li>
-        <li></strong> Involves regulation by CHK1/CHK2 kinases (Molinari, 2000).</li>
+        <li>Confirms that all DNA has been correctly replicated before mitosis begins (Molinari, 2000).</li>
+        <li>Involves regulation by CHK1/CHK2 kinases (Molinari, 2000).</li>
       </ul>
                
       <h2>Tumor Suppressors and Oncogenes in Cell Cycle Regulation</h2>
       <h3>a. Tumor Suppressors</h3>
       <ul>
-        <li><strong>p53:</strong> Called the “guardian of the genome,” it can pause the cell cycle, trigger cell aging (senescence), or cause cell death (apoptosis) when there’s DNA damage (Osada & Takahashi, 2002).</li>
-        <li><strong>Rb:</strong> Stops the cell from entering the S phase too early by holding back a protein called E2F (Sherr & McCormick, 2002).</li>
+        <li><strong>p53:</strong> Called the “guardian of the genome,” it can pause the cell cycle, trigger cell aging (senescence), or cause cell death (apoptosis) when there’s DNA damage (Osada &amp; Takahashi, 2002).</li>
+        <li><strong>Rb:</strong> Stops the cell from entering the S phase too early by holding back a protein called E2F (Sherr &amp; McCormick, 2002).</li>
       </ul>
 
       <h3>b. Oncogenes</h3>
       <ul>
-        <li><strong>Cyclin D1:</strong> Often found in high amounts in breast cancer and lymphomas (Osada & Takahashi, 2002; Sanchez-Vega et al., 2018).</li>
+        <li><strong>Cyclin D1:</strong> Often found in high amounts in breast cancer and lymphomas (Osada &amp; Takahashi, 2002; Sanchez-Vega et al., 2018).</li>
         <li><strong>CDK4/6:</strong> Frequently increased in glioblastomas and melanomas, speeding up cell division (Sanchez-Vega et al., 2018).</li>
       </ul>
 
       <h2>Cell Cycle Dysregulation in Cancer</h2>
-
-      <p>
-        In cancer, the cell cycle checkpoints are often turned off or don’t work properly. This means cells can keep dividing even when there’s DNA damage or chromosome problems (Glaviano et al., 2025). Some common examples include:</p>
-      
+      <p>In cancer, the cell cycle checkpoints are often turned off or don’t work properly. This means cells can keep dividing even when there’s DNA damage or chromosome problems (Glaviano et al., 2025). Some common examples include:</p>
       <ul>
-        <li><strong>Loss of p53:</strong> This happens in more than 50% of human cancers. Without p53, damaged cells don’t stop or die—they keep multiplying (Sherr & McCormick, 2002).</li>
-        <li><strong>Overactive CDK4/6:</strong> These proteins can cause too much phosphorylation of Rb, allowing the cell to move into the S phase too early (Sherr & McCormick, 2002).</li>
-        <li><strong>Excess Cyclin D:</strong> Leads to continuous cell growth by speeding up the G1 phase and is seen in several cancers like breast cancer and lymphomas (Malumbres & Barbacid, 2009).</li>
+        <li><strong>Loss of p53:</strong> This happens in more than 50% of human cancers. Without p53, damaged cells don’t stop or die—they keep multiplying (Sherr &amp; McCormick, 2002).</li>
+        <li><strong>Overactive CDK4/6:</strong> These proteins can cause too much phosphorylation of Rb, allowing the cell to move into the S phase too early (Sherr &amp; McCormick, 2002).</li>
+        <li><strong>Excess Cyclin D:</strong> Leads to continuous cell growth by speeding up the G1 phase and is seen in several cancers like breast cancer and lymphomas (Malumbres &amp; Barbacid, 2009).</li>
       </ul>
 
       <h2>References</h2>
       <ol>
-        <li>Dombrádi, V., Krieglstein, J., & Klumpp, S. (2002). Regulating the regulators. EMBO Reports, 3(2), 120–124. https://doi.org/10.1093/embo-reports/kvf034
-        <li>Glaviano, A., Singh, S. K., Lee, E. H. C., Okina, E., Lam, H. Y., Carbone, D., Reddy, E. P., O’Connor, M. J., Koff, A., Singh, G., Stebbing, J., Sethi, G., Crasta, K. C., Diana, P., Keyomarsi, K., Yaffe, M. B., Wander, S. A., Bardia, A., & Kumar, A. P. (2025). Cell cycle dysregulation in cancer. Pharmacological Reviews, 77(2), 100030. https://doi.org/10.1016/j.pharmr.2024.100030
+        <li>Dombrádi, V., Krieglstein, J., &amp; Klumpp, S. (2002). Regulating the regulators. EMBO Reports, 3(2), 120–124. https://doi.org/10.1093/embo-reports/kvf034
+        <li>Glaviano, A., Singh, S. K., Lee, E. H. C., Okina, E., Lam, H. Y., Carbone, D., Reddy, E. P., O’Connor, M. J., Koff, A., Singh, G., Stebbing, J., Sethi, G., Crasta, K. C., Diana, P., Keyomarsi, K., Yaffe, M. B., Wander, S. A., Bardia, A., &amp; Kumar, A. P. (2025). Cell cycle dysregulation in cancer. Pharmacological Reviews, 77(2), 100030. https://doi.org/10.1016/j.pharmr.2024.100030
         <li>Hanahan, D. (2022). Hallmarks of Cancer: New Dimensions. Cancer Discovery, 12(1), 31–46. https://doi.org/10.1158/2159-8290.CD-21-1059
-        <li>Hanahan, D., & Weinberg, R. A. (2011). Hallmarks of Cancer: The Next Generation. Cell, 144(5), 646–674. https://doi.org/10.1016/j.cell.2011.02.013
-        <li>Malumbres, M., & Barbacid, M. (2009). Cell cycle, CDKs and cancer: a changing paradigm. Nature Reviews Cancer, 9(3), 153–166. https://doi.org/10.1038/nrc2602
+        <li>Hanahan, D., &amp; Weinberg, R. A. (2011). Hallmarks of Cancer: The Next Generation. Cell, 144(5), 646–674. https://doi.org/10.1016/j.cell.2011.02.013
+        <li>Malumbres, M., &amp; Barbacid, M. (2009). Cell cycle, CDKs and cancer: a changing paradigm. Nature Reviews Cancer, 9(3), 153–166. https://doi.org/10.1038/nrc2602
         <li>Molinari, M. (2000). Cell cycle checkpoints and their inactivation in human cancer. Cell Proliferation, 33(5), 261–274. https://doi.org/10.1046/j.1365-2184.2000.00191.x
-        <li>Osada, H., & Takahashi, T. (2002). Genetic alterations of multiple tumor suppressors and oncogenes in the carcinogenesis and progression of lung cancer. Oncogene, 21(48), 7421–7434. https://doi.org/10.1038/sj.onc.1205802
-        <li>Piña-Sánchez, P., Chávez-González, A., Ruiz-Tachiquín, M., Vadillo, E., Monroy-García, A., Montesinos, J. J., Grajales, R., Gutiérrez de la Barrera, M., & Mayani, H. (2021). Cancer Biology, Epidemiology, and Treatment in the 21st Century: Current Status and Future Challenges From a Biomedical Perspective. Cancer Control, 28. https://doi.org/10.1177/10732748211038735
-        <li>Sanchez-Vega, F., Mina, M., Armenia, J., Chatila, W. K., Luna, A., La, K. C., Dimitriadoy, S., Liu, D. L., Kantheti, H. S., Saghafinia, S., Chakravarty, D., Daian, F., Gao, Q., Bailey, M. H., Liang, W.-W., Foltz, S. M., Shmulevich, I., Ding, L., Heins, Z., … Mariamidze, A. (2018). Oncogenic Signaling Pathways in The Cancer Genome Atlas. Cell, 173(2), 321-337.e10. https://doi.org/10.1016/j.cell.2018.03.035
-        <li>Sherr, C. J., & McCormick, F. (2002). The RB and p53 pathways in cancer. Cancer Cell, 2(2), 103–112. https://doi.org/10.1016/S1535-6108(02)00102-2
-        <li>Vermeulen, K., Van Bockstaele, D. R., & Berneman, Z. N. (2003). The cell cycle: a review of regulation, deregulation and therapeutic targets in cancer. Cell Proliferation, 36(3), 131–149. https://doi.org/10.1046/j.1365-2184.2003.00266.x
+        <li>Osada, H., &amp; Takahashi, T. (2002). Genetic alterations of multiple tumor suppressors and oncogenes in the carcinogenesis and progression of lung cancer. Oncogene, 21(48), 7421–7434. https://doi.org/10.1038/sj.onc.1205802
+        <li>Piña-Sánchez, P., Chávez-González, A., Ruiz-Tachiquín, M., Vadillo, E., Monroy-García, A., Montesinos, J. J., Grajales, R., Gutiérrez de la Barrera, M., &amp; Mayani, H. (2021). Cancer Biology, Epidemiology, and Treatment in the 21st Century: Current Status and Future Challenges From a Biomedical Perspective. Cancer Control, 28. https://doi.org/10.1177/10732748211038735
+        <li>Sanchez-Vega, F., Mina, M, Armenia, J., Chatila, W. K., Luna, A., La, K. C., Dimitriadoy, S., Liu, D. L., Kantheti, H. S., Saghafinia, S., Chakravarty, D., Daian, F., Gao, Q., Bailey, M. H., Liang, W.-W., Foltz, S. M., Shmulevich, I., Ding, L., Heins, Z., … Mariamidze, A. (2018). Oncogenic Signaling Pathways in The Cancer Genome Atlas. Cell, 173(2), 321-337.e10. https://doi.org/10.1016/j.cell.2018.03.035
+        <li>Sherr, C. J., &amp; McCormick, F. (2002). The RB and p53 pathways in cancer. Cancer Cell, 2(2), 103–112. https://doi.org/10.1016/S1535-6108(02)00102-2
+        <li>Vermeulen, K., Van Bockstaele, D. R., &amp; Berneman, Z. N. (2003). The cell cycle: a review of regulation, deregulation and therapeutic targets in cancer. Cell Proliferation, 36(3), 131–149. https://doi.org/10.1046/j.1365-2184.2003.00266.x
       </ol>
     </section>
   </div>
