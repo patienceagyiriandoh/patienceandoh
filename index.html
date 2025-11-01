@@ -7,152 +7,108 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-/* === Lilac Theme (matches series page) === */
 :root{
-  --bg:#E9DEF9;
-  --bg-2:#f6f1fd;
-  --surface:#ffffff;
-  --text:#141427;
-  --muted:#6b6880;
-  --line:#e7e2f3;
-  --accent:#6B46C1;
-  --accent2:#22D3EE;
-  --radius:20px;
+  --bg:#E9DEF9; --bg-2:#f6f1fd; --surface:#fff; --text:#141427; --muted:#6b6880;
+  --line:#e7e2f3; --accent:#6B46C1; --accent2:#22D3EE; --radius:20px;
   --shadow:0 18px 50px rgba(39,18,74,.15);
 }
 [data-theme="dark"]{
-  --bg:#171528;
-  --bg-2:#1f1b36;
-  --surface:#1f1d33;
-  --text:#f2edff;
-  --muted:#bfb8d8;
-  --line:#2a2546;
-  --accent:#B794F4;
-  --accent2:#38E2FF;
-  --shadow:0 22px 60px rgba(0,0,0,.45);
+  --bg:#171528; --bg-2:#1f1b36; --surface:#1f1d33; --text:#f2edff; --muted:#bfb8d8;
+  --line:#2a2546; --accent:#B794F4; --accent2:#38E2FF; --shadow:0 22px 60px rgba(0,0,0,.45);
 }
 *{box-sizing:border-box}
 :focus-visible{outline:3px solid var(--accent2);outline-offset:2px}
-html{scroll-behavior:smooth}
 body{
   margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);
   background:
     radial-gradient(1100px 600px at -10% -10%, rgba(155,135,245,.25), transparent 60%),
     radial-gradient(900px 500px at 110% 0%, rgba(34,211,238,.18), transparent 55%),
     linear-gradient(180deg,var(--bg),var(--bg-2));
-  min-height:100dvh;
+  min-height:100dvh; display:flex; flex-direction:column;
 }
 
-/* === Header: glass, sticky, with theme pill === */
+/* Header */
 header{
-  position:sticky;top:0;z-index:20;
+  position:sticky; top:0; z-index:30;
   backdrop-filter:saturate(140%) blur(10px);
   background:linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.15));
   border-bottom:1px solid rgba(255,255,255,.35);
 }
 .header-bar{
   max-width:1140px;margin:auto;padding:.8rem 1rem;
-  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  display:flex;align-items:center;gap:12px;position:relative;
 }
 .menu-toggle{
   width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;
   border-radius:14px;background:rgba(255,255,255,.6);
   color:var(--accent);cursor:pointer;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);
 }
-.site-title{
-  font-weight:800;font-size:1.15rem;letter-spacing:.2px;color:var(--accent);
-  margin-left:4px;
-}
+.site-title{font-weight:800;font-size:1.15rem;letter-spacing:.2px;color:var(--accent)}
 .header-right{margin-left:auto;display:flex;align-items:center;gap:.6rem}
 
 /* Theme pill */
-.theme-pill{
-  display:flex;gap:2px;padding:4px;border-radius:999px;
-  background:rgba(255,255,255,.7);backdrop-filter:blur(8px);
-  box-shadow:0 10px 25px rgba(0,0,0,.12);
-}
-.theme-pill button{
-  border:0;border-radius:999px;padding:.45rem .85rem;cursor:pointer;
-  font-weight:600;background:transparent;color:#444;
-}
-.theme-pill button.active{
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#0b1020;
-}
+.theme-pill{display:flex;gap:2px;padding:4px;border-radius:999px;
+  background:rgba(255,255,255,.7);backdrop-filter:blur(8px);box-shadow:0 10px 25px rgba(0,0,0,.12)}
+.theme-pill button{border:0;border-radius:999px;padding:.45rem .85rem;cursor:pointer;font-weight:600;background:transparent;color:#444}
+.theme-pill button.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b1020}
 
-/* === Nav: glass pill on mobile, bar on desktop === */
+/* Mini menu (dropdown on desktop, sheet on mobile) */
 #navMenu{
-  display:none;flex-direction:column;gap:.55rem;
-  background:rgba(255,255,255,.65);backdrop-filter:blur(8px);
-  border-top:1px solid var(--line);padding:.8rem 1rem
+  position:absolute; right:1rem; top:62px; width:280px; display:none; flex-direction:column; gap:.5rem;
+  background:var(--surface); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow);
+  padding:.8rem; animation:fadeUp .18s ease both;
 }
+#navMenu.open{display:flex}
 #navMenu a{
-  text-decoration:none;color:var(--accent);font-weight:700;
-  padding:.55rem .75rem;border-radius:12px
+  display:flex; align-items:center; gap:.55rem;
+  text-decoration:none; color:var(--text); font-weight:700; padding:.55rem .6rem; border-radius:12px;
 }
-#navMenu a:hover{
-  background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b1020
-}
-@media(min-width:768px){
-  #navMenu{
-    display:flex !important;flex-direction:row;justify-content:center;gap:.6rem;
-    border:0;background:transparent;backdrop-filter:none;padding:.6rem 0 0
-  }
-  #navMenu a{padding:.45rem .75rem}
+#navMenu a:hover{background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#0b1020}
+#scrim{display:none; position:fixed; inset:0; background:rgba(0,0,0,.2); z-index:25}
+#scrim.show{display:block}
+
+@media(max-width:767px){
+  #navMenu{left:0; right:0; margin:0 auto; width:min(92vw,420px)}
 }
 
-/* === Main container === */
+/* Main */
 .container{
-  max-width:1140px;margin:1rem auto 2.5rem; padding:1.2rem;
-  display:flex;flex-wrap:wrap;gap:1.8rem;
+  max-width:1140px; margin:1rem auto 2.5rem; padding:1.2rem;
+  display:flex; flex-wrap:wrap; gap:1.8rem; flex:1 0 auto;
 }
-
-/* Cards */
-.profile,.bio{
-  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-  box-shadow:var(--shadow);padding:20px
-}
-
-/* Profile card */
-.profile{flex:1 1 100%;text-align:center}
-.profile img{
-  width:170px;height:170px;object-fit:cover;border-radius:50%;
-  border:3px solid #fff;box-shadow:0 12px 28px rgba(0,0,0,.12);margin-top:.3rem
-}
+.profile,.bio{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:20px}
+.profile{flex:1 1 100%; text-align:center}
+.profile img{width:170px;height:170px;object-fit:cover;border-radius:50%;border:3px solid #fff;box-shadow:0 12px 28px rgba(0,0,0,.12);margin-top:.3rem}
 .profile h2{font-size:1.35rem;margin:.7rem 0 .1rem}
 .profile p{margin:.2rem 0;font-size:.95rem;color:var(--muted)}
 .profile .links{margin-top:.5rem}
-.profile .links a{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:42px;height:42px;margin:0 .25rem;border-radius:12px;text-decoration:none;
-  color:#0b1020;background:linear-gradient(135deg,var(--accent),var(--accent2));
-  box-shadow:0 10px 24px rgba(39,18,74,.22)
-}
-
-/* Bio card */
+.profile .links a{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;margin:0 .25rem;border-radius:12px;text-decoration:none;color:#0b1020;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 10px 24px rgba(39,18,74,.22)}
 .bio{flex:1 1 100%}
-.bio h1{
-  font-size:1.4rem;color:var(--accent);margin:1rem 0 .5rem
-}
+.bio h1{font-size:1.4rem;color:var(--accent);margin:1rem 0 .5rem}
 .bio p,.bio ul{font-size:1rem;line-height:1.7}
 .bio ul{padding-left:1.1rem}
+@media(min-width:900px){.profile{flex:1 1 32%}.bio{flex:1 1 64%}}
 
-/* Responsive split */
-@media(min-width:900px){
-  .profile{flex:1 1 32%}
-  .bio{flex:1 1 64%}
+/* Footer */
+footer{
+  border-top:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.05));
+  color:var(--muted);
 }
+.footer-wrap{max-width:1140px;margin:auto;padding:1rem}
+.footer-wrap small{font-weight:600}
 
 /* Motion */
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.profile,.bio,#navMenu{animation:fadeUp .45s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
 
 <header>
   <div class="header-bar">
-    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+    <button class="menu-toggle" id="menuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="navMenu">
+      <i class="fas fa-bars"></i>
+    </button>
     <div class="site-title">Patience Agyiri Andoh</div>
     <div class="header-right">
       <div class="theme-pill" role="group" aria-label="Theme">
@@ -160,20 +116,22 @@ header{
         <button id="darkBtn" onclick="setTheme('dark')">Dark</button>
       </div>
     </div>
+
+    <!-- Mini menu -->
+    <nav id="navMenu" aria-label="Site">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="education.html"><i class="fa-solid fa-laptop-code"></i> Skills</a>
+      <a href="research.html"><i class="fa-solid fa-flask"></i> Research Projects</a>
+      <a href="work.html"><i class="fa-solid fa-briefcase"></i> Work Experience</a>
+      <a href="leadership.html"><i class="fa-solid fa-people-group"></i> Leadership & Volunteerism</a>
+      <a href="blog.html"><i class="fa-solid fa-book-open"></i> Blogs</a>
+      <a href="community.html"><i class="fa-solid fa-hand-holding-heart"></i> Extra Curricular Activities</a>
+    </nav>
   </div>
-  <nav class="nav-menu" id="navMenu">
-    <a href="index.html">Home</a>
-    <a href="education.html">Skills</a>
-    <a href="research.html">Research Projects</a>
-    <a href="work.html">Work Experience</a>
-    <a href="leadership.html">Leadership and Volunteerism</a>
-    <a href="blog.html">Blogs</a>
-    <a href="community.html">Extra Curricular Activities</a>
-  </nav>
 </header>
+<div id="scrim" tabindex="-1"></div>
 
 <main class="container">
-  <!-- Profile card -->
   <div class="profile">
     <img src="slide4.jpg" alt="Patience Agyiri Andoh" loading="lazy" width="340" height="340">
     <h2>Patience Agyiri Andoh</h2>
@@ -185,7 +143,6 @@ header{
     </div>
   </div>
 
-  <!-- Bio card (content unchanged) -->
   <div class="bio">
     <h1>About Me</h1>
     <p>My name is Patience Maame Efua Agyiri Andoh, and I am a 22-year-old graduate of the Kwame Nkrumah University of Science and Technology, where I pursued a bachelor's degree in Biological Sciences. Outside of academics, I enjoy reading, debating, watching movies, and listening to music. Interestingly, I find cooking therapeutic when I’m stressed—even though I used to dislike it.</p>
@@ -210,16 +167,14 @@ header{
   </div>
 </main>
 
-<script>
-/* mobile nav */
-function toggleMenu(){
-  const menu=document.getElementById('navMenu');
-  if(window.innerWidth<768){
-    menu.style.display = (menu.style.display==='flex') ? 'none' : 'flex';
-  }
-}
+<footer>
+  <div class="footer-wrap">
+    <small>© 2025 Patience Agyiri Andoh</small>
+  </div>
+</footer>
 
-/* shared theme logic: persists and syncs with other pages */
+<script>
+/* Theme (shared) */
 function setTheme(mode){
   const m = mode==='dark' ? 'dark' : 'light';
   document.documentElement.setAttribute('data-theme', m);
@@ -231,6 +186,22 @@ function setTheme(mode){
   const saved = localStorage.getItem('theme') || 'light';
   setTheme(saved);
 })();
+
+/* Mini menu behaviour (desktop + mobile) */
+const btn = document.getElementById('menuBtn');
+const menu = document.getElementById('navMenu');
+const scrim = document.getElementById('scrim');
+
+function openMenu(){menu.classList.add('open'); btn.setAttribute('aria-expanded','true'); scrim.classList.add('show');}
+function closeMenu(){menu.classList.remove('open'); btn.setAttribute('aria-expanded','false'); scrim.classList.remove('show');}
+function toggleMenu(){ menu.classList.contains('open') ? closeMenu() : openMenu(); }
+
+btn.addEventListener('click', toggleMenu);
+scrim.addEventListener('click', closeMenu);
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeMenu(); });
+document.addEventListener('click', e=>{
+  if(!menu.contains(e.target) && e.target!==btn && !btn.contains(e.target)) closeMenu();
+});
 </script>
 
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
