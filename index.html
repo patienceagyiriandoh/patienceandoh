@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-/* === Lilac Theme === */
+/* === Lilac Theme (matches series page) === */
 :root{
   --bg:#E9DEF9;
   --bg-2:#f6f1fd;
@@ -32,6 +32,8 @@
   --shadow:0 22px 60px rgba(0,0,0,.45);
 }
 *{box-sizing:border-box}
+:focus-visible{outline:3px solid var(--accent2);outline-offset:2px}
+html{scroll-behavior:smooth}
 body{
   margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);
   background:
@@ -41,7 +43,7 @@ body{
   min-height:100dvh;
 }
 
-/* === Header: glass, sticky === */
+/* === Header: glass, sticky, with theme pill === */
 header{
   position:sticky;top:0;z-index:20;
   backdrop-filter:saturate(140%) blur(10px);
@@ -62,10 +64,20 @@ header{
   margin-left:4px;
 }
 .header-right{margin-left:auto;display:flex;align-items:center;gap:.6rem}
-.mode-switch{
-  padding:.45rem .7rem;border-radius:999px;border:1px solid var(--line);
-  background:rgba(255,255,255,.7);backdrop-filter:blur(6px);
-  font-weight:600;color:var(--text)
+
+/* Theme pill */
+.theme-pill{
+  display:flex;gap:2px;padding:4px;border-radius:999px;
+  background:rgba(255,255,255,.7);backdrop-filter:blur(8px);
+  box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+.theme-pill button{
+  border:0;border-radius:999px;padding:.45rem .85rem;cursor:pointer;
+  font-weight:600;background:transparent;color:#444;
+}
+.theme-pill button.active{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#0b1020;
 }
 
 /* === Nav: glass pill on mobile, bar on desktop === */
@@ -81,8 +93,6 @@ header{
 #navMenu a:hover{
   background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b1020
 }
-
-/* Desktop nav */
 @media(min-width:768px){
   #navMenu{
     display:flex !important;flex-direction:row;justify-content:center;gap:.6rem;
@@ -142,13 +152,13 @@ header{
 
 <header>
   <div class="header-bar">
-    <div class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu"><i class="fas fa-bars"></i></div>
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
     <div class="site-title">Patience Agyiri Andoh</div>
     <div class="header-right">
-      <select class="mode-switch" onchange="changeTheme(this.value)">
-        <option value="light">Light</option>
-        <option value="dark">Dark</option>
-      </select>
+      <div class="theme-pill" role="group" aria-label="Theme">
+        <button id="lightBtn" class="active" onclick="setTheme('light')">Light</button>
+        <button id="darkBtn" onclick="setTheme('dark')">Dark</button>
+      </div>
     </div>
   </div>
   <nav class="nav-menu" id="navMenu">
@@ -165,7 +175,7 @@ header{
 <main class="container">
   <!-- Profile card -->
   <div class="profile">
-    <img src="slide4.jpg" alt="Patience Agyiri Andoh">
+    <img src="slide4.jpg" alt="Patience Agyiri Andoh" loading="lazy" width="340" height="340">
     <h2>Patience Agyiri Andoh</h2>
     <p>Undergraduate Student</p>
     <p>Kwame Nkrumah University of Science and Technology (KNUST), Kumasi - Ghana</p>
@@ -201,22 +211,26 @@ header{
 </main>
 
 <script>
+/* mobile nav */
 function toggleMenu(){
   const menu=document.getElementById('navMenu');
   if(window.innerWidth<768){
     menu.style.display = (menu.style.display==='flex') ? 'none' : 'flex';
   }
 }
-function changeTheme(mode){
-  document.documentElement.setAttribute('data-theme',mode);
-  localStorage.setItem('theme',mode);
+
+/* shared theme logic: persists and syncs with other pages */
+function setTheme(mode){
+  const m = mode==='dark' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', m);
+  localStorage.setItem('theme', m);
+  document.getElementById('lightBtn').classList.toggle('active', m==='light');
+  document.getElementById('darkBtn').classList.toggle('active', m==='dark');
 }
-document.addEventListener('DOMContentLoaded',()=>{
-  const saved=localStorage.getItem('theme')||'light';
-  document.documentElement.setAttribute('data-theme',saved);
-  const sel=document.querySelector('.mode-switch');
-  if(sel) sel.value=saved;
-});
+(function initTheme(){
+  const saved = localStorage.getItem('theme') || 'light';
+  setTheme(saved);
+})();
 </script>
 
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
