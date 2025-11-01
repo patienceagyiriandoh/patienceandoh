@@ -6,89 +6,126 @@
 <title>Blog • Patience Agyiri Andoh</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
-  :root{
-    --lilac:#E9DEF9;
-    --white:#ffffff;
-    --text:#2c1e45;
-    --muted:#665c78;
-    --accent:#6B46C1;
-    --accent-2:#B794F4;
-    --shadow:0 10px 30px rgba(0,0,0,.15);
-    --radius:16px;
-  }
-  [data-theme="dark"]{
-    --lilac:#1e1a2f;
-    --white:#2a2540;
-    --text:#f2ebff;
-    --muted:#b6a9d8;
-    --accent:#B794F4;
-    --accent-2:#9F7AEA;
-    --shadow:0 10px 30px rgba(0,0,0,.55);
-  }
+:root{
+  --lilac:#E9DEF9;
+  --white:#ffffff;
+  --text:#2c1e45;
+  --muted:#6a5b85;
+  --accent:#6B46C1;
+  --accent2:#B794F4;
+  --radius:16px;
+  --shadow:0 12px 25px rgba(0,0,0,.12);
+}
+[data-theme="dark"]{
+  --lilac:#1e1a2f;
+  --white:#2a2540;
+  --text:#f2ebff;
+  --muted:#b6a9d8;
+  --accent:#B794F4;
+  --accent2:#9F7AEA;
+  --shadow:0 12px 25px rgba(0,0,0,.55);
+}
 
-  *{box-sizing:border-box}
-  body{
-    margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
-    background-color:var(--lilac);color:var(--text);min-height:100vh;
-    animation:fade-in .4s ease-out both;
-  }
-  header{
-    position:sticky;top:0;z-index:10;background:var(--white);
-    border-bottom:1px solid rgba(0,0,0,.05);
-    display:flex;align-items:center;justify-content:space-between;
-    padding:.9rem 1.5rem;box-shadow:var(--shadow);
-    backdrop-filter:saturate(120%) blur(3px);
-  }
-  .back{color:var(--accent);font-size:1.3rem;text-decoration:none;transition:opacity .25s}
-  .back:hover{opacity:.75}
-  .theme-select{
-    border:1px solid rgba(0,0,0,.1);border-radius:8px;padding:.4rem .6rem;
-    font-size:.9rem;background:var(--lilac);color:var(--text)
-  }
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Inter',system-ui,Segoe UI,Roboto,Arial,sans-serif;
+  background:linear-gradient(180deg,var(--lilac),#f7f1fc);
+  color:var(--text);
+  min-height:100vh;
+  animation:fadeBody .5s ease both;
+}
+header{
+  position:sticky;top:0;z-index:10;
+  background:linear-gradient(90deg,var(--lilac) 0%,#f7f1fc 100%);
+  box-shadow:var(--shadow);
+  padding:.9rem 1.5rem;
+  display:flex;justify-content:space-between;align-items:center;
+  backdrop-filter:blur(8px);
+}
+.back{
+  font-size:1.3rem;color:var(--accent);
+  text-decoration:none;transition:transform .25s ease;
+}
+.back:hover{transform:translateX(-4px)}
+.theme-select{
+  background:var(--white);border:1px solid rgba(0,0,0,.1);
+  border-radius:8px;padding:.45rem .7rem;font-size:.9rem;color:var(--text);
+}
 
-  main{max-width:1000px;margin:auto;padding:2rem 1rem}
-  h1{text-align:center;font-size:2rem;color:var(--accent);margin-bottom:1.5rem}
+main{
+  max-width:1000px;margin:auto;padding:2.3rem 1rem;
+  animation:fadeMain .6s ease-out both;
+}
+h1{
+  text-align:center;font-size:2rem;color:var(--accent);
+  margin-bottom:1.5rem;
+}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  gap:1.6rem;
+}
+.card{
+  background:var(--white);
+  border-radius:var(--radius);
+  padding:1.4rem 1.2rem;
+  box-shadow:var(--shadow);
+  text-align:center;
+  border:1px solid rgba(0,0,0,.04);
+  position:relative;
+  overflow:hidden;
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+.card::before{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(155,135,245,.12),rgba(107,70,193,.1));
+  opacity:0;transition:opacity .3s ease;
+}
+.card:hover::before{opacity:1}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 40px rgba(0,0,0,.18);
+}
+.card a{
+  text-decoration:none;
+  color:var(--accent);
+  font-weight:700;
+  font-size:1.1rem;
+  display:inline-block;
+  position:relative;
+}
+.card a::after{
+  content:"";
+  position:absolute;left:0;bottom:-4px;
+  width:0;height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  transition:width .3s ease;
+}
+.card a:hover::after{width:100%}
+.card p{
+  color:var(--muted);
+  margin-top:.5rem;
+  font-size:.9rem;
+  line-height:1.5;
+}
+footer{
+  text-align:center;
+  color:var(--muted);
+  padding:1.5rem 0 2rem;
+  font-size:.85rem;
+}
 
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem}
+@keyframes fadeBody{from{opacity:0}to{opacity:1}}
+@keyframes fadeMain{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
-  .card{
-    background:var(--white);border-radius:var(--radius);padding:1.3rem;
-    box-shadow:var(--shadow);text-align:center;
-    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-    border:1px solid rgba(0,0,0,.04);
-    animation:fade-up .5s ease-out both;
-  }
-  .card:nth-child(1){animation-delay:.05s}
-  .card:nth-child(2){animation-delay:.12s}
-  .card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,.22)}
-
-  .card a{
-    text-decoration:none;color:var(--accent);font-weight:700;font-size:1.1rem;
-    position:relative;
-  }
-  /* subtle underline that grows on hover */
-  .card a::after{
-    content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0%;
-    background:linear-gradient(90deg,var(--accent),var(--accent-2));
-    transition:width .25s ease;
-  }
-  .card a:hover::after{width:100%}
-
-  .card p{color:var(--muted);margin-top:.4rem;font-size:.9rem}
-
-  footer{text-align:center;color:var(--muted);padding:1.5rem 0;font-size:.85rem}
-
-  /* animations */
-  @keyframes fade-in{from{opacity:0}to{opacity:1}}
-  @keyframes fade-up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-
-  /* respect reduced motion */
-  @media (prefers-reduced-motion:reduce){
-    *{animation:none !important;transition:none !important}
-  }
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
 </style>
 </head>
+
 <body>
 <header>
   <a href="javascript:history.back()" class="back" aria-label="Go back"><i class="fas fa-arrow-left"></i></a>
@@ -112,17 +149,17 @@
   </div>
 </main>
 
-<footer>© 2025 Patience Agyiri Andoh</footer>
+<footer>© 2025 Patience Agyiri Andoh • Lilac Theme</footer>
 
 <script>
 function changeTheme(mode){
-  document.documentElement.setAttribute('data-theme', mode);
-  localStorage.setItem('theme', mode);
+  document.documentElement.setAttribute('data-theme',mode);
+  localStorage.setItem('theme',mode);
 }
-document.addEventListener('DOMContentLoaded', () => {
-  const saved = localStorage.getItem('theme') || 'light';
-  document.documentElement.setAttribute('data-theme', saved);
-  document.querySelector('.theme-select').value = saved;
+document.addEventListener('DOMContentLoaded',()=>{
+  const saved=localStorage.getItem('theme')||'light';
+  document.documentElement.setAttribute('data-theme',saved);
+  document.querySelector('.theme-select').value=saved;
 });
 </script>
 </body>
