@@ -26,8 +26,9 @@ body{
     linear-gradient(180deg,var(--bg),var(--bg-2));
   min-height:100dvh;display:flex;flex-direction:column;
 }
+body.no-scroll{overflow:hidden}
 
-/* ===== Header (glassy) ===== */
+/* ===== Header ===== */
 header{
   position:sticky;top:0;z-index:40;
   backdrop-filter:saturate(140%) blur(10px);
@@ -62,7 +63,7 @@ header{
   color:#0b1020
 }
 
-/* ===== Left drawer nav ===== */
+/* ===== Drawer ===== */
 #scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;z-index:45}
 #scrim.show{display:block}
 .drawer{
@@ -79,7 +80,11 @@ header{
   text-decoration:none;color:var(--text);font-weight:700;border-radius:12px;
   padding:.6rem .7rem;display:flex;gap:.55rem;align-items:center;
 }
-.drawer a:hover{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b1020}
+.drawer a:hover,
+.drawer a.active-link{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#0b1020;
+}
 
 /* ===== Main ===== */
 main{max-width:950px;margin:1rem auto 2.4rem;padding:0 1rem;flex:1 0 auto}
@@ -93,7 +98,7 @@ p,li{line-height:1.65;font-size:1rem}
 ul{padding-left:1.1rem}
 hr{border:0;border-top:1px solid var(--line);margin:18px 0}
 
-/* Footer */
+/* ===== Footer ===== */
 footer{
   border-top:1px solid var(--line);
   background:linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.05));
@@ -104,12 +109,10 @@ footer{
 
 /* Motion */
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
 </style>
 </head>
 <body>
 
-<!-- Header -->
 <header>
   <div class="header-bar">
     <button id="menuBtn" class="menu-btn" aria-label="Open menu"><i class="fas fa-bars"></i></button>
@@ -123,7 +126,6 @@ footer{
   </div>
 </header>
 
-<!-- Left drawer -->
 <aside id="drawer" class="drawer" aria-hidden="true" aria-label="Site navigation">
   <div class="drawer-header">
     <div class="drawer-title">Menu</div>
@@ -139,10 +141,8 @@ footer{
 </aside>
 <div id="scrim" tabindex="-1"></div>
 
-<!-- Main -->
 <main>
   <section class="card">
-    <!-- ==== CONTENT UNCHANGED ==== -->
     <h1>Technical Skills</h1>
 
     <h2>Computing Literacy</h2>
@@ -162,11 +162,9 @@ footer{
       <li><strong>Gas Chromatography (GC):</strong> Used in quality control to analyze compound volatility and chemical composition.</li>
       <li><strong>Fourier Transform Infrared Spectroscopy (FTIR):</strong> Familiar with functional group analysis in raw materials for pharmaceutical verification.</li>
     </ul>
-    <!-- ==== CONTENT UNCHANGED ==== -->
   </section>
 </main>
 
-<!-- Footer -->
 <footer>
   <div class="footer-wrap">
     <small>© 2025 Patience Agyiri Andoh</small>
@@ -174,16 +172,14 @@ footer{
 </footer>
 
 <script>
-/* Theme sync across pages */
 function setTheme(mode){
   const m = mode === 'dark' ? 'dark' : 'light';
   document.documentElement.setAttribute('data-theme', m);
   localStorage.setItem('theme', m);
-  const lightBtn = document.getElementById('lightBtn');
-  const darkBtn  = document.getElementById('darkBtn');
-  if(lightBtn && darkBtn){
+  const lightBtn=document.getElementById('lightBtn'),darkBtn=document.getElementById('darkBtn');
+  if(lightBtn&&darkBtn){
     lightBtn.classList.toggle('active', m==='light');
-    darkBtn.classList.toggle('active',  m==='dark');
+    darkBtn.classList.toggle('active', m==='dark');
   }
 }
 (function initTheme(){
@@ -191,27 +187,41 @@ function setTheme(mode){
   setTheme(saved);
 })();
 
-/* Drawer open/close */
-const drawer  = document.getElementById('drawer');
-const scrim   = document.getElementById('scrim');
-const menuBtn = document.getElementById('menuBtn');
-const closeBtn= document.getElementById('closeBtn');
+const drawer=document.getElementById('drawer');
+const scrim=document.getElementById('scrim');
+const menuBtn=document.getElementById('menuBtn');
+const closeBtn=document.getElementById('closeBtn');
 
 function openDrawer(){
   drawer.classList.add('open');
   scrim.classList.add('show');
   drawer.setAttribute('aria-hidden','false');
+  document.body.classList.add('no-scroll');
+  menuBtn.setAttribute('aria-expanded','true');
 }
 function closeDrawer(){
   drawer.classList.remove('open');
   scrim.classList.remove('show');
   drawer.setAttribute('aria-hidden','true');
+  document.body.classList.remove('no-scroll');
+  menuBtn.setAttribute('aria-expanded','false');
+  menuBtn.focus();
 }
-menuBtn.addEventListener('click', openDrawer);
-closeBtn.addEventListener('click', closeDrawer);
-scrim.addEventListener('click', closeDrawer);
-document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeDrawer(); });
-drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeDrawer));
+menuBtn.addEventListener('click',openDrawer);
+closeBtn.addEventListener('click',closeDrawer);
+scrim.addEventListener('click',closeDrawer);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
+drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeDrawer));
+
+(function markActiveNav(){
+  const here=(location.pathname.split('/').pop()||'index.html').toLowerCase();
+  document.querySelectorAll('.drawer a').forEach(a=>{
+    const href=(a.getAttribute('href')||'').toLowerCase();
+    if(here===href||(here==='index.html'&&/home|index/.test(href))){
+      a.classList.add('active-link');
+    }
+  });
+})();
 </script>
 
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
