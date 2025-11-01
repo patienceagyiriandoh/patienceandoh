@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Patience Agyiri Andoh</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 :root{
   --bg:#E9DEF9; --bg-2:#f6f1fd; --surface:#ffffff; --text:#141427; --muted:#6b6880;
@@ -28,19 +29,20 @@ body{
 
 /* Header */
 header{
-  position:sticky;top:0;z-index:30;
+  position:sticky;top:0;z-index:40;
   backdrop-filter:saturate(140%) blur(10px);
   background:linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.15));
   border-bottom:1px solid rgba(255,255,255,.35);
 }
 .header-bar{
   max-width:1140px;margin:auto;padding:.8rem 1rem;
-  display:flex;align-items:center;gap:12px;position:relative;
+  display:flex;align-items:center;gap:12px;
 }
 .menu-toggle{
   width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;
   border-radius:14px;background:rgba(255,255,255,.6);
-  color:var(--accent);cursor:pointer;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);
+  color:var(--accent);cursor:pointer;border:none;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);
 }
 .site-title{font-weight:800;font-size:1.15rem;letter-spacing:.2px;color:var(--accent)}
 .header-right{margin-left:auto;display:flex;align-items:center;gap:.6rem}
@@ -51,25 +53,25 @@ header{
 .theme-pill button{border:0;border-radius:999px;padding:.45rem .85rem;cursor:pointer;font-weight:600;background:transparent;color:#444}
 .theme-pill button.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b1020}
 
-/* Side Menu (left slide-in) */
-#navMenu{
-  position:fixed;left:-280px;top:0;height:100%;width:260px;
-  background:var(--surface);border-right:1px solid var(--line);
-  box-shadow:var(--shadow);padding:1.2rem .9rem;display:flex;flex-direction:column;
-  gap:.75rem;transition:left .3s ease;z-index:40;
-}
-#navMenu.open{left:0}
-#navMenu a{
-  text-decoration:none;color:var(--text);font-weight:700;
-  padding:.55rem .7rem;border-radius:12px;
-}
-#navMenu a:hover{
-  background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b1020
-}
-#scrim{
-  position:fixed;inset:0;background:rgba(0,0,0,.3);display:none;z-index:35;
-}
+/* Left drawer nav */
+#scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;z-index:45}
 #scrim.show{display:block}
+
+.drawer{
+  position:fixed;left:-288px;top:0;height:100%;width:276px;z-index:50;
+  background:var(--surface);border-right:1px solid var(--line);
+  box-shadow:var(--shadow);padding:16px 12px;transition:left .28s ease;
+  display:flex;flex-direction:column;gap:.5rem;
+}
+.drawer.open{left:0}
+.drawer-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem}
+.drawer-title{font-weight:800;color:var(--accent)}
+.drawer-close{background:transparent;border:none;font-size:1.1rem;cursor:pointer;color:var(--text)}
+.drawer a{
+  text-decoration:none;color:var(--text);font-weight:700;border-radius:12px;
+  padding:.6rem .7rem;display:flex;gap:.55rem;align-items:center;
+}
+.drawer a:hover{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b1020}
 
 /* Main */
 .container{
@@ -78,20 +80,32 @@ header{
 }
 .profile,.bio{
   background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-  box-shadow:var(--shadow);padding:20px;
+  box-shadow:var(--shadow);padding:20px
 }
 .profile{flex:1 1 100%;text-align:center}
-.profile img{width:170px;height:170px;object-fit:cover;border-radius:50%;
-  border:3px solid #fff;box-shadow:0 12px 28px rgba(0,0,0,.12);margin-top:.3rem}
+.profile img{
+  width:170px;height:170px;object-fit:cover;border-radius:50%;
+  border:3px solid #fff;box-shadow:0 12px 28px rgba(0,0,0,.12);margin-top:.3rem
+}
 .profile h2{font-size:1.35rem;margin:.7rem 0 .1rem}
 .profile p{margin:.2rem 0;font-size:.95rem;color:var(--muted)}
 .profile .links{margin-top:.5rem}
-.profile .links a{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;margin:0 .25rem;border-radius:12px;text-decoration:none;color:#0b1020;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 10px 24px rgba(39,18,74,.22)}
+.profile .links a{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:42px;height:42px;margin:0 .25rem;border-radius:12px;text-decoration:none;
+  color:#0b1020;background:linear-gradient(135deg,var(--accent),var(--accent2));
+  box-shadow:0 10px 24px rgba(39,18,74,.22)
+}
+
 .bio{flex:1 1 100%}
 .bio h1{font-size:1.4rem;color:var(--accent);margin:1rem 0 .5rem}
 .bio p,.bio ul{font-size:1rem;line-height:1.7}
 .bio ul{padding-left:1.1rem}
-@media(min-width:900px){.profile{flex:1 1 32%}.bio{flex:1 1 64%}}
+
+@media(min-width:900px){
+  .profile{flex:1 1 32%}
+  .bio{flex:1 1 64%}
+}
 
 /* Footer */
 footer{
@@ -105,12 +119,13 @@ footer{
 </head>
 <body>
 
+<!-- Header with theme toggle -->
 <header>
   <div class="header-bar">
-    <button class="menu-toggle" id="menuBtn"><i class="fas fa-bars"></i></button>
+    <button id="menuBtn" class="menu-toggle" aria-label="Open menu"><i class="fas fa-bars"></i></button>
     <div class="site-title">Patience Agyiri Andoh</div>
     <div class="header-right">
-      <div class="theme-pill">
+      <div class="theme-pill" role="group" aria-label="Theme">
         <button id="lightBtn" class="active" onclick="setTheme('light')">Light</button>
         <button id="darkBtn" onclick="setTheme('dark')">Dark</button>
       </div>
@@ -118,17 +133,23 @@ footer{
   </div>
 </header>
 
-<nav id="navMenu">
-  <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
-  <a href="education.html"><i class="fa-solid fa-laptop-code"></i> Skills</a>
-  <a href="research.html"><i class="fa-solid fa-flask"></i> Research Projects</a>
-  <a href="work.html"><i class="fa-solid fa-briefcase"></i> Work Experience</a>
-  <a href="leadership.html"><i class="fa-solid fa-people-group"></i> Leadership & Volunteerism</a>
-  <a href="blog.html"><i class="fa-solid fa-book-open"></i> Blogs</a>
-  <a href="community.html"><i class="fa-solid fa-hand-holding-heart"></i> Extra Curricular Activities</a>
-</nav>
-<div id="scrim"></div>
+<!-- Left slide-in drawer -->
+<aside id="drawer" class="drawer" aria-hidden="true" aria-label="Site navigation">
+  <div class="drawer-header">
+    <div class="drawer-title">Menu</div>
+    <button id="closeBtn" class="drawer-close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <a href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a>
+  <a href="education.html"><i class="fa-solid fa-laptop-code"></i><span>Skills</span></a>
+  <a href="research.html"><i class="fa-solid fa-flask"></i><span>Research Projects</span></a>
+  <a href="work.html"><i class="fa-solid fa-briefcase"></i><span>Work Experience</span></a>
+  <a href="leadership.html"><i class="fa-solid fa-people-group"></i><span>Leadership & Volunteerism</span></a>
+  <a href="blog.html"><i class="fa-solid fa-book-open"></i><span>Blogs</span></a>
+  <a href="community.html"><i class="fa-solid fa-hand-holding-heart"></i><span>Extra Curricular Activities</span></a>
+</aside>
+<div id="scrim" tabindex="-1"></div>
 
+<!-- Main content (text intact) -->
 <main class="container">
   <div class="profile">
     <img src="slide4.jpg" alt="Patience Agyiri Andoh" loading="lazy">
@@ -136,14 +157,31 @@ footer{
     <p>Graduate, BSc. Biological Sciences</p>
     <p>Kwame Nkrumah University of Science and Technology (KNUST), Kumasi - Ghana</p>
     <div class="links">
-      <a href="mailto:patienceandoh300@gmail.com"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.linkedin.com/in/patienceagyiriandoh/"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:patienceandoh300@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/patienceagyiriandoh/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
     </div>
   </div>
 
   <div class="bio">
     <h1>About Me</h1>
-    <p>My name is Patience Maame Efua Agyiri Andoh, and I am a 22-year-old graduate of the Kwame Nkrumah University of Science and Technology, where I pursued a bachelor's degree in Biological Sciences...</p>
+    <p>My name is Patience Maame Efua Agyiri Andoh, and I am a 22-year-old graduate of the Kwame Nkrumah University of Science and Technology, where I pursued a bachelor's degree in Biological Sciences. Outside of academics, I enjoy reading, debating, watching movies, and listening to music. Interestingly, I find cooking therapeutic when I’m stressed—even though I used to dislike it.</p>
+    <p>As a woman in STEM, I aspire to become a research scientist specializing in cancer biology. It’s a field that deeply inspires me, and I hope to contribute meaningfully to the global fight against cancer. Fun fact: I absolutely love plantain chips and ice cream—I could live on them forever!</p>
+    <p>I strongly believe in the freedom of emotional expression, as long as it doesn't cause harm to others. I also believe that God is the creator of the universe and sovereign over all things. For me, life is about doing our best and trusting God with the rest.</p>
+
+    <h1>Education</h1>
+    <p><strong>Undergraduate Studies</strong></p>
+    <ul>
+      <li>
+        <strong>Biological Sciences</strong>, <em>Jan. 2022 to Sept. 2025</em><br>
+        Kwame Nkrumah University of Science and Technology, Kumasi - Ghana
+      </li>
+    </ul>
+
+    <h1>Research Interests</h1>
+    <ul>
+      <li>Cancer Biology</li>
+      <li>Biology Education</li>
+    </ul>
   </div>
 </main>
 
@@ -154,32 +192,45 @@ footer{
 </footer>
 
 <script>
-/* Theme Sync */
+/* Theme sync across pages */
 function setTheme(mode){
-  const m = mode==='dark' ? 'dark' : 'light';
+  const m = mode === 'dark' ? 'dark' : 'light';
   document.documentElement.setAttribute('data-theme', m);
   localStorage.setItem('theme', m);
-  document.getElementById('lightBtn').classList.toggle('active', m==='light');
-  document.getElementById('darkBtn').classList.toggle('active', m==='dark');
+  const lightBtn = document.getElementById('lightBtn');
+  const darkBtn  = document.getElementById('darkBtn');
+  if(lightBtn && darkBtn){
+    lightBtn.classList.toggle('active', m==='light');
+    darkBtn.classList.toggle('active',  m==='dark');
+  }
 }
 (function initTheme(){
   const saved = localStorage.getItem('theme') || 'light';
   setTheme(saved);
 })();
 
-/* Left-side menu */
-const menuBtn=document.getElementById('menuBtn');
-const navMenu=document.getElementById('navMenu');
-const scrim=document.getElementById('scrim');
+/* Drawer open/close */
+const drawer = document.getElementById('drawer');
+const scrim  = document.getElementById('scrim');
+const menuBtn= document.getElementById('menuBtn');
+const closeBtn= document.getElementById('closeBtn');
 
-menuBtn.addEventListener('click',()=>{
-  navMenu.classList.toggle('open');
-  scrim.classList.toggle('show');
-});
-scrim.addEventListener('click',()=>{
-  navMenu.classList.remove('open');
+function openDrawer(){
+  drawer.classList.add('open');
+  scrim.classList.add('show');
+  drawer.setAttribute('aria-hidden','false');
+}
+function closeDrawer(){
+  drawer.classList.remove('open');
   scrim.classList.remove('show');
-});
+  drawer.setAttribute('aria-hidden','true');
+}
+
+menuBtn.addEventListener('click', openDrawer);
+closeBtn.addEventListener('click', closeDrawer);
+scrim.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeDrawer(); });
+drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeDrawer));
 </script>
 
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
