@@ -6,6 +6,15 @@
 <title>Articles - Patience Agyiri Andoh</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Early theme apply to prevent flash and keep it universal -->
+<script>
+  (function(){
+    var saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+  })();
+</script>
+
 <style>
 /* ===== Lilac theme (matches site) ===== */
 :root{
@@ -193,23 +202,33 @@ footer{
   </div>
 </footer>
 
+<!-- ===== Universal Theme Manager (reuse on all pages) ===== -->
 <script>
-/* Pill theme toggle — synced across pages */
-function setTheme(mode){
-  const m = mode === 'dark' ? 'dark' : 'light';
-  document.documentElement.setAttribute('data-theme', m);
-  localStorage.setItem('theme', m);
-  // reflect active state on buttons
-  const lightBtn = document.getElementById('lightBtn');
-  const darkBtn  = document.getElementById('darkBtn');
-  if(lightBtn && darkBtn){
-    lightBtn.classList.toggle('active', m==='light');
-    darkBtn.classList.toggle('active',  m==='dark');
+(function ThemeManager(){
+  const KEY = 'theme';
+  function apply(mode){
+    const m = mode === 'dark' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', m);
+    localStorage.setItem(KEY, m);
+    // Sync pill buttons if present
+    var lightBtn = document.getElementById('lightBtn');
+    var darkBtn  = document.getElementById('darkBtn');
+    if(lightBtn) lightBtn.classList.toggle('active', m==='light');
+    if(darkBtn)  darkBtn.classList.toggle('active',  m==='dark');
+    // Sync any dropdowns (if some pages use a select)
+    document.querySelectorAll('select.mode-switch').forEach(sel => sel.value = m);
   }
-}
-(function initTheme(){
-  const saved = localStorage.getItem('theme') || 'light';
-  setTheme(saved);
+  // expose for onclick handlers
+  window.setTheme = apply;
+  // init from storage (keeps UI in correct state on load)
+  apply(localStorage.getItem(KEY) || 'light');
+
+  // Also listen for dropdown changes (if present)
+  document.addEventListener('change', (e)=>{
+    if(e.target && e.target.matches('select.mode-switch')){
+      apply(e.target.value);
+    }
+  });
 })();
 </script>
 
