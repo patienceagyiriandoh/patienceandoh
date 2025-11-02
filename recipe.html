@@ -6,6 +6,15 @@
 <title>How I Discovered My Favorite Recipe • Patience Agyiri Andoh</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Early apply: set theme ASAP to prevent flash and keep it universal -->
+<script>
+  (function(){
+    var saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+  })();
+</script>
+
 <style>
 /* ===== Lilac theme (site-wide) ===== */
 :root{
@@ -163,26 +172,41 @@ footer{
 </footer>
 
 <script>
-/* ===== Theme: pill toggle synced across pages ===== */
-function setTheme(mode){
-  const m = mode === 'dark' ? 'dark' : 'light';
-  document.documentElement.setAttribute('data-theme', m);
-  localStorage.setItem('theme', m);
-  // reflect active state
-  const lightBtn = document.getElementById('lightBtn');
-  const darkBtn  = document.getElementById('darkBtn');
-  if(lightBtn && darkBtn){
-    lightBtn.classList.toggle('active', m==='light');
-    darkBtn.classList.toggle('active',  m==='dark');
+/* ===== Theme: pill toggle synced across pages & tabs ===== */
+(function ThemeManager(){
+  const KEY = 'theme';
+
+  function reflectButtons(mode){
+    var lightBtn = document.getElementById('lightBtn');
+    var darkBtn  = document.getElementById('darkBtn');
+    if(lightBtn) lightBtn.classList.toggle('active', mode==='light');
+    if(darkBtn)  darkBtn.classList.toggle('active',  mode==='dark');
   }
-}
-(function initTheme(){
-  const saved = localStorage.getItem('theme') || 'light';
-  setTheme(saved);
+
+  function apply(mode){
+    const m = mode === 'dark' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', m);
+    localStorage.setItem(KEY, m);
+    reflectButtons(m);
+  }
+
+  // expose for onclicks
+  window.setTheme = apply;
+
+  // init from storage
+  const saved = localStorage.getItem(KEY) || 'light';
+  apply(saved);
+
+  // cross-tab sync: if theme changes in another tab, update this page too
+  window.addEventListener('storage', (e)=>{
+    if(e.key === KEY && e.newValue){
+      document.documentElement.setAttribute('data-theme', e.newValue);
+      reflectButtons(e.newValue);
+    }
+  });
 })();
 </script>
 
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
-
