@@ -19,52 +19,72 @@
   --shadow:0 22px 60px rgba(0,0,0,.45);
 }
 *{box-sizing:border-box}
+:focus-visible{outline:3px solid var(--accent2); outline-offset:2px}
 body{
-  margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);
+  margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif; color:var(--text);
   background:
     radial-gradient(1000px 560px at -10% -10%, rgba(155,135,245,.25), transparent 60%),
     radial-gradient(820px 480px at 110% 0%, rgba(34,211,238,.18), transparent 55%),
     linear-gradient(180deg,var(--bg),var(--bg-2));
-  min-height:100dvh;
+  min-height:100dvh; display:flex; flex-direction:column;
 }
 
-/* Header */
+/* ===== Header (glassy) ===== */
 header{
-  position:sticky;top:0;z-index:10;
+  position:sticky; top:0; z-index:10;
   backdrop-filter:saturate(140%) blur(10px);
   background:linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.15));
   border-bottom:1px solid rgba(255,255,255,.35);
 }
 .header-bar{
-  max-width:1100px;margin:auto;padding:.8rem 1rem;
-  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  max-width:1100px; margin:auto; padding:.8rem 1rem;
+  display:flex; align-items:center; gap:12px; flex-wrap:wrap;
 }
 .back-btn{
-  width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;
-  border-radius:14px;background:rgba(255,255,255,.6);
-  color:var(--accent);text-decoration:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);
+  width:44px; height:44px; display:inline-flex; align-items:center; justify-content:center;
+  border-radius:14px; background:rgba(255,255,255,.6);
+  color:var(--accent); text-decoration:none; box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);
 }
-.header-right{margin-left:auto}
-.mode-switch{
-  padding:.45rem .7rem;border-radius:999px;border:1px solid var(--line);
-  background:rgba(255,255,255,.7);backdrop-filter:blur(6px);
-  font-weight:600;color:var(--text)
+.header-right{margin-left:auto; display:flex; align-items:center}
+
+/* ===== Pill theme toggle ===== */
+.theme-pill{
+  display:flex; gap:2px; padding:4px; border-radius:999px;
+  background:rgba(255,255,255,.7); backdrop-filter:blur(8px);
+  box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+.theme-pill button{
+  border:0; border-radius:999px; padding:.45rem .85rem; cursor:pointer;
+  font-weight:700; background:transparent; color:#444;
+}
+.theme-pill button.active{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#0b1020;
 }
 
-/* Main */
-main{max-width:950px;margin:1rem auto 2.4rem;padding:0 1rem}
+/* ===== Main ===== */
+main{max-width:950px; margin:1rem auto 2.4rem; padding:0 1rem; flex:1 0 auto}
 .card{
-  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-  box-shadow:var(--shadow);padding:24px 22px;animation:fadeUp .45s ease both
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow); padding:24px 22px; animation:fadeUp .45s ease both
 }
-h1{color:var(--accent);font-size:1.9rem;margin:6px 0 14px;text-align:center}
-h2{font-size:1.15rem;color:var(--accent);margin:18px 0 6px}
+h1{color:var(--accent); font-size:1.9rem; margin:6px 0 14px; text-align:center}
+h2{font-size:1.15rem; color:var(--accent); margin:18px 0 6px}
 p,li{line-height:1.65}
-ul{padding-left:1.1rem}
+ul,ol{padding-left:1.1rem}
 .callout{
-  background:rgba(107,70,193,.08);border:1px solid var(--line);
-  border-radius:14px;padding:12px 14px;margin:12px 0
+  background:rgba(107,70,193,.08); border:1px solid var(--line);
+  border-radius:14px; padding:12px 14px; margin:12px 0
 }
+
+/* ===== Footer ===== */
+footer{
+  border-top:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.05));
+  color:var(--muted); text-align:center;
+}
+.footer-wrap{max-width:1100px; margin:auto; padding:1rem}
+.footer-wrap small{font-weight:600}
 
 /* Motion */
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
@@ -78,17 +98,18 @@ ul{padding-left:1.1rem}
   <div class="header-bar">
     <a href="javascript:history.back()" class="back-btn" aria-label="Back"><i class="fas fa-arrow-left"></i></a>
     <div class="header-right">
-      <select class="mode-switch" onchange="changeTheme(this.value)">
-        <option value="light">Light</option>
-        <option value="dark">Dark</option>
-      </select>
+      <!-- Pill toggle -->
+      <div class="theme-pill" role="group" aria-label="Theme">
+        <button id="lightBtn" class="active" onclick="setTheme('light')">Light</button>
+        <button id="darkBtn" onclick="setTheme('dark')">Dark</button>
+      </div>
     </div>
   </div>
 </header>
 
 <main>
   <section class="card">
-    <h1>How Debate and Research Intertwine</h1>
+    <h1>The Debate and Research Mix</h1>
 
     <p>Debate and research are a loop. Research builds reliable facts. Debate tests those facts in public. Each step improves the other.</p>
 
@@ -166,17 +187,30 @@ ul{padding-left:1.1rem}
   </section>
 </main>
 
+<footer>
+  <div class="footer-wrap">
+    <small>© 2025 Patience Agyiri Andoh</small>
+  </div>
+</footer>
+
 <script>
-function changeTheme(mode){
-  document.documentElement.setAttribute('data-theme', mode);
-  localStorage.setItem('theme', mode);
+/* Pill theme toggle — synced across pages */
+function setTheme(mode){
+  const m = mode === 'dark' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', m);
+  localStorage.setItem('theme', m);
+  // reflect active state on buttons
+  const lightBtn = document.getElementById('lightBtn');
+  const darkBtn  = document.getElementById('darkBtn');
+  if(lightBtn && darkBtn){
+    lightBtn.classList.toggle('active', m==='light');
+    darkBtn.classList.toggle('active',  m==='dark');
+  }
 }
-document.addEventListener('DOMContentLoaded', ()=>{
+(function initTheme(){
   const saved = localStorage.getItem('theme') || 'light';
-  document.documentElement.setAttribute('data-theme', saved);
-  const sel = document.querySelector('.mode-switch');
-  if(sel) sel.value = saved;
-});
+  setTheme(saved);
+})();
 </script>
 
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
