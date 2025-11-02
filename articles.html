@@ -7,28 +7,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-/* ===== Lilac theme to match Cancer Biology Series ===== */
+/* ===== Lilac theme (matches site) ===== */
 :root{
-  --bg:#E9DEF9;
-  --bg-2:#f6f1fd;
-  --surface:#ffffff;
-  --text:#141427;
-  --muted:#6b6880;
-  --line:#e7e2f3;
-  --accent:#6B46C1;
-  --accent2:#22D3EE;
-  --radius:20px;
-  --shadow:0 18px 50px rgba(39,18,74,.15);
+  --bg:#E9DEF9; --bg-2:#f6f1fd; --surface:#ffffff; --text:#141427;
+  --muted:#6b6880; --line:#e7e2f3; --accent:#6B46C1; --accent2:#22D3EE;
+  --radius:20px; --shadow:0 18px 50px rgba(39,18,74,.15);
 }
 [data-theme="dark"]{
-  --bg:#171528;
-  --bg-2:#1f1b36;
-  --surface:#1f1d33;
-  --text:#f2edff;
-  --muted:#bfb8d8;
-  --line:#2a2546;
-  --accent:#B794F4;
-  --accent2:#38E2FF;
+  --bg:#171528; --bg-2:#1f1b36; --surface:#1f1d33; --text:#f2edff;
+  --muted:#bfb8d8; --line:#2a2546; --accent:#B794F4; --accent2:#38E2FF;
   --shadow:0 22px 60px rgba(0,0,0,.45);
 }
 *{box-sizing:border-box}
@@ -41,7 +28,7 @@ body{
   min-height:100dvh;
 }
 
-/* ===== Glassy sticky header (same family) ===== */
+/* Header */
 header{
   position:sticky;top:0;z-index:10;
   backdrop-filter:saturate(140%) blur(10px);
@@ -64,18 +51,20 @@ header{
   font-weight:600;color:var(--text)
 }
 
-/* ===== Main & card ===== */
+/* Main */
 main{max-width:950px;margin:1rem auto 2.4rem;padding:0 1rem}
 .card{
   background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
   box-shadow:var(--shadow);padding:24px 22px;animation:fadeUp .45s ease both
 }
-h1{
-  color:var(--accent);font-size:1.9rem;margin:6px 0 14px;text-align:center
-}
-p,ul{margin-bottom:1.2em}
+h1{color:var(--accent);font-size:1.9rem;margin:6px 0 14px;text-align:center}
+h2{font-size:1.15rem;color:var(--accent);margin:18px 0 6px}
+p,li{line-height:1.65}
 ul{padding-left:1.1rem}
-li{line-height:1.65;font-size:1rem}
+.callout{
+  background:rgba(107,70,193,.08);border:1px solid var(--line);
+  border-radius:14px;padding:12px 14px;margin:12px 0
+}
 
 /* Motion */
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
@@ -89,7 +78,6 @@ li{line-height:1.65;font-size:1rem}
   <div class="header-bar">
     <a href="javascript:history.back()" class="back-btn" aria-label="Back"><i class="fas fa-arrow-left"></i></a>
     <div class="header-right">
-      <!-- class present to sync across pages -->
       <select class="mode-switch" onchange="changeTheme(this.value)">
         <option value="light">Light</option>
         <option value="dark">Dark</option>
@@ -100,30 +88,92 @@ li{line-height:1.65;font-size:1rem}
 
 <main>
   <section class="card">
-    <!-- ==== CONTENT UNCHANGED ==== -->
-    <h1>How Debate and Research Work Together</h1>
-    <p>Debate and research build critical thinking, evidence-based logic, and articulate communication. Together they:</p>
+    <h1>How Debate and Research Intertwine</h1>
+
+    <p>Debate and research are a loop. Research builds reliable facts. Debate tests those facts in public. Each step improves the other.</p>
+
+    <h2>Why they need each other</h2>
     <ul>
-      <li>Build evidence-based thinking</li>
-      <li>Enhance communication skills</li>
-      <li>Encourage open-mindedness</li>
-      <li>Develop resilience</li>
-      <li>Foster lifelong curiosity</li>
+      <li><strong>Research powers claims.</strong> Evidence, data, and methods give arguments a base.</li>
+      <li><strong>Debate exposes gaps.</strong> Cross-examination reveals weak assumptions and missing sources.</li>
+      <li><strong>Feedback guides new studies.</strong> Tough questions turn into new research tasks.</li>
     </ul>
-    <!-- ==== CONTENT UNCHANGED ==== -->
+
+    <h2>Simple workflow</h2>
+    <ol>
+      <li><strong>Define the motion or question.</strong> Write one testable claim.</li>
+      <li><strong>Map stakeholders and impacts.</strong> Who is affected and how.</li>
+      <li><strong>Collect sources.</strong> Prefer primary data, official stats, and peer-reviewed work.</li>
+      <li><strong>Build a model.</strong> Cause → mechanism → outcome. State limits.</li>
+      <li><strong>Draft cases.</strong> One clear thesis, three warranted points, one counter-case reply.</li>
+      <li><strong>Debate.</strong> Track every challenge as a “research ticket.”</li>
+      <li><strong>Revise.</strong> Update claims, citations, and the model. Repeat.</li>
+    </ol>
+
+    <h2>How research improves debate</h2>
+    <ul>
+      <li>Replaces anecdotes with numbers.</li>
+      <li>Clarifies mechanisms, not just correlations.</li>
+      <li>Sets ranges and uncertainty rather than absolutes.</li>
+      <li>Supplies credible citations for every point.</li>
+    </ul>
+
+    <h2>How debate improves research</h2>
+    <ul>
+      <li>Forces clear definitions of terms.</li>
+      <li>Stress-tests causal links and counterfactuals.</li>
+      <li>Surfaces edge cases and ethical risks.</li>
+      <li>Demands simple language for complex ideas.</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Quick template:</strong> Claim → Evidence → Warrant → Impact → Weakness → Fix.
+    </div>
+
+    <h2>Evidence checklist</h2>
+    <ul>
+      <li>Source type labeled: primary, secondary, or meta-analysis.</li>
+      <li>Method stated: sample, period, measures, limitations.</li>
+      <li>Numbers reproducible: link or dataset available.</li>
+      <li>No cherry-picking: include the best counter-evidence.</li>
+    </ul>
+
+    <h2>Common failure points</h2>
+    <ul>
+      <li>Undefined terms that shift mid-round.</li>
+      <li>Confusing correlation with causation.</li>
+      <li>Appeals to authority without methods.</li>
+      <li>Ignoring opportunity cost or trade-offs.</li>
+    </ul>
+
+    <h2>Mini example</h2>
+    <p><strong>Motion:</strong> “This house would ban single-use plastics.”</p>
+    <ul>
+      <li><strong>Research:</strong> Life-cycle emissions, waste leakage rates, recycling capacity, substitute materials.</li>
+      <li><strong>Debate test:</strong> What is the baseline? What are near-term costs to low-income users? What enforcement works?</li>
+      <li><strong>Revision:</strong> Narrow to food-service plastics in cities with collection systems; pair with deposit-return. Cite emission reductions with intervals, not a single point.</li>
+    </ul>
+
+    <h2>Practice drill</h2>
+    <ol>
+      <li>Pick a claim you use often.</li>
+      <li>List three strongest counters.</li>
+      <li>Find one high-quality source for each side.</li>
+      <li>Rewrite your claim with ranges and a stated uncertainty.</li>
+    </ol>
+
+    <p>Use debate to pressure-test ideas. Use research to keep debate honest. That loop is how arguments get strong and stay accurate.</p>
   </section>
 </main>
 
 <script>
 function changeTheme(mode){
   document.documentElement.setAttribute('data-theme', mode);
-  localStorage.setItem('theme', mode); // persist across pages
+  localStorage.setItem('theme', mode);
 }
 document.addEventListener('DOMContentLoaded', ()=>{
-  // apply saved theme on every page load
   const saved = localStorage.getItem('theme') || 'light';
   document.documentElement.setAttribute('data-theme', saved);
-  // sync dropdown to saved theme
   const sel = document.querySelector('.mode-switch');
   if(sel) sel.value = saved;
 });
