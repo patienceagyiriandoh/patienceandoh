@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Personal Blog • Patience Agyiri Andoh</title>
+<title>Personal Blogs • Patience Agyiri Andoh</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -61,7 +61,7 @@ header{
   color:#0b1020;
 }
 
-/* Left drawer nav */
+/* Drawer */
 #scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;z-index:45}
 #scrim.show{display:block}
 .drawer{
@@ -84,40 +84,37 @@ header{
 main{max-width:1100px;margin:0 auto;padding:1.2rem 1rem 2.2rem;flex:1 0 auto}
 h1{font-size:1.95rem;margin:0 0 .9rem;color:var(--accent)}
 
-/* Horizontal cards */
+/* Cards */
 .stack{display:grid;gap:18px}
 .card{
   display:grid;
   grid-template-columns: 320px 1fr;
   align-items:stretch;
-  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
-  box-shadow:var(--shadow); overflow:hidden;
-  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden;
+  transition:transform .25s ease, box-shadow .25s ease;
 }
-.card:hover{transform:translateY(-6px); box-shadow:0 26px 60px rgba(39,18,74,.20)}
-.thumb{
-  position:relative; overflow:hidden; background:linear-gradient(120deg, rgba(155,135,245,.18), rgba(34,211,238,.18));
-  min-height:220px;
-}
+.card:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(39,18,74,.20)}
+.thumb{position:relative;overflow:hidden;min-height:220px}
 .thumb img{display:block;width:100%;height:100%;object-fit:cover}
 .badge{
-  position:absolute; left:14px; bottom:14px;
-  background:var(--badge); color:#fff; font-size:.8rem; font-weight:600;
-  padding:.35rem .6rem; border-radius:11px; display:inline-flex; gap:.4rem; align-items:center;
+  position:absolute;left:14px;bottom:14px;
+  background:var(--badge);color:#fff;font-size:.8rem;font-weight:600;
+  padding:.35rem .6rem;border-radius:11px;display:inline-flex;gap:.4rem;align-items:center;
   box-shadow:0 6px 14px rgba(0,0,0,.15);
 }
 
 /* Body */
 .body{padding:18px 20px;display:flex;flex-direction:column;justify-content:center}
-.title{margin:0 0 .4rem; font-size:1.25rem}
-.meta{display:flex; gap:14px; color:var(--muted); font-size:.92rem; align-items:center}
+.title{margin:0 0 .4rem;font-size:1.25rem}
+.meta{display:flex;gap:14px;color:var(--muted);font-size:.92rem;align-items:center}
 .meta i{opacity:.9}
 .cta{
   align-self:flex-start;
-  display:inline-flex; gap:.55rem; align-items:center; margin-top:12px; font-weight:800;
-  text-decoration:none; color:#0b1020; border-radius:14px; padding:.6rem .9rem;
+  display:inline-flex;gap:.55rem;align-items:center;margin-top:12px;font-weight:800;
+  text-decoration:none;color:#0b1020;border-radius:14px;padding:.6rem .9rem;
   background:linear-gradient(135deg,var(--accent),var(--accent2));
-  box-shadow:0 8px 22px rgba(43,18,88,.25); transition:transform .2s ease;
+  box-shadow:0 8px 22px rgba(43,18,88,.25);transition:transform .2s ease;
 }
 .cta:hover{transform:translateY(-2px)}
 
@@ -131,37 +128,30 @@ footer{
 .footer-wrap small{font-weight:600}
 
 /* Responsive */
-@media (max-width:740px){
+@media(max-width:740px){
   .card{grid-template-columns:1fr;}
   .thumb{height:200px}
 }
-
-/* Motion */
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.card{animation:fadeUp .45s ease both}
-.card:nth-child(2){animation-delay:.06s}
-@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
 </style>
 </head>
 <body>
 
 <header>
   <div class="bar">
-    <button id="menuBtn" class="menu-btn" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
-    <div class="title">Personal Blog</div>
+    <button id="menuBtn" class="menu-btn"><i class="fa-solid fa-bars"></i></button>
+    <div class="title">Personal Blogs</div>
     <div class="spacer"></div>
-    <div class="theme-pill" role="group" aria-label="Theme">
+    <div class="theme-pill">
       <button id="lightBtn" class="active" onclick="setTheme('light')">Light</button>
       <button id="darkBtn" onclick="setTheme('dark')">Dark</button>
     </div>
   </div>
 </header>
 
-<!-- Drawer -->
-<aside id="drawer" class="drawer" aria-hidden="true">
+<aside id="drawer" class="drawer">
   <div class="drawer-header">
     <div class="drawer-title">Menu</div>
-    <button id="closeBtn" class="drawer-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <button id="closeBtn" class="drawer-close"><i class="fa-solid fa-xmark"></i></button>
   </div>
   <a href="homepage.html"><i class="fa-solid fa-house"></i> Home</a>
   <a href="skills.html"><i class="fa-solid fa-laptop-code"></i> Skills</a>
@@ -171,19 +161,14 @@ footer{
   <a href="blog.html"><i class="fa-solid fa-book-open"></i> Personal Blogs</a>
   <a href="community.html"><i class="fa-solid fa-hand-holding-heart"></i> Extra Curricular Activities</a>
 </aside>
-<div id="scrim" tabindex="-1"></div>
+<div id="scrim"></div>
 
 <main>
   <h1>Explore my writing</h1>
-
   <section class="stack">
-    <!-- Card 1 -->
     <article class="card">
       <div class="thumb">
-        <img src="/patienceandoh/assets/cancer_card.jpg"
-             alt="Cancer Biology visual"
-             loading="lazy"
-             onerror="this.outerHTML='<img src=&quot;https://images.unsplash.com/photo-1516549655169-df83a0774510?q=80&amp;w=1200&amp;auto=format&amp;fit=crop&quot; alt=&quot;Cancer Biology placeholder&quot;>'">
+        <img src="cancer_card.jpg" alt="Cancer Biology visual" loading="lazy">
         <span class="badge"><i class="fa-solid fa-flask"></i> Cancer Biology</span>
       </div>
       <div class="body">
@@ -193,14 +178,10 @@ footer{
       </div>
     </article>
 
-    <!-- Card 2 -->
     <article class="card">
       <div class="thumb">
-        <img src="/patienceandoh/assets/debate_card.jpg"
-             alt="Debate and notes"
-             loading="lazy"
-             onerror="this.outerHTML='<img src=&quot;https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&amp;w=1200&amp;auto=format&amp;fit=crop&quot; alt=&quot;Debate placeholder&quot;>'">
-        <span class="badge"><i class="fa-solid fa-microphone-lines"></i> Debate &amp; Notes</span>
+        <img src="debate_card.jpg" alt="Debate and notes" loading="lazy">
+        <span class="badge"><i class="fa-solid fa-microphone-lines"></i> Debate & Notes</span>
       </div>
       <div class="body">
         <h2 class="title">My Debate Experience</h2>
@@ -212,14 +193,12 @@ footer{
 </main>
 
 <footer>
-  <div class="footer-wrap">
-    <small>© 2025 Patience Agyiri Andoh</small>
-  </div>
+  <div class="footer-wrap"><small>© 2025 Patience Agyiri Andoh</small></div>
 </footer>
 
 <script>
 function setTheme(mode){
-  const m = mode==='dark'?'dark':'light';
+  const m=mode==='dark'?'dark':'light';
   document.documentElement.setAttribute('data-theme',m);
   localStorage.setItem('theme',m);
   document.getElementById('lightBtn').classList.toggle('active',m==='light');
@@ -232,7 +211,8 @@ const scrim=document.getElementById('scrim');
 document.getElementById('menuBtn').onclick=()=>{drawer.classList.add('open');scrim.classList.add('show')};
 document.getElementById('closeBtn').onclick=()=>{drawer.classList.remove('open');scrim.classList.remove('show')};
 scrim.onclick=()=>{drawer.classList.remove('open');scrim.classList.remove('show')};
-document.onkeydown=e=>{if(e.key==='Escape')drawer.classList.remove('open'),scrim.classList.remove('show')};
+document.onkeydown=e=>{if(e.key==='Escape'){drawer.classList.remove('open');scrim.classList.remove('show')}};
 </script>
+
 </body>
 </html>
