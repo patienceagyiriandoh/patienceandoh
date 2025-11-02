@@ -9,7 +9,6 @@
 
 <style>
 :root{
-  /* Lilac theme */
   --bg:#E9DEF9; --bg-2:#f5effd; --card:#ffffff; --text:#121225; --muted:#6b6880;
   --line:#e8e4f4; --badge:#3b3b4f; --accent:#6B46C1; --accent2:#22D3EE;
   --radius:22px; --shadow:0 18px 55px rgba(39,18,74,.15);
@@ -85,24 +84,22 @@ header{
 main{max-width:1100px;margin:0 auto;padding:1.2rem 1rem 2.2rem;flex:1 0 auto}
 h1{font-size:1.95rem;margin:0 0 .9rem;color:var(--accent)}
 
-/* Cards */
+/* Horizontal cards */
 .stack{display:grid;gap:18px}
 .card{
+  display:grid;
+  grid-template-columns: 320px 1fr; /* image left, text right */
+  align-items:stretch;
   background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
   box-shadow:var(--shadow); overflow:hidden;
   transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 .card:hover{transform:translateY(-6px); box-shadow:0 26px 60px rgba(39,18,74,.20)}
-
 .thumb{
-  position:relative; border-bottom:1px solid var(--line);
-  border-radius:calc(var(--radius) - 2px) calc(var(--radius) - 2px) 0 0;
-  overflow:hidden; min-height:150px; background:linear-gradient(120deg, rgba(155,135,245,.18), rgba(34,211,238,.18));
+  position:relative; overflow:hidden; background:linear-gradient(120deg, rgba(155,135,245,.18), rgba(34,211,238,.18));
+  min-height:220px; /* ensures a nice horizontal band */
 }
-.thumb img{
-  display:block; width:100%; height:220px; object-fit:cover;
-  transform:translateZ(0);
-}
+.thumb picture, .thumb img{display:block;width:100%;height:100%;object-fit:cover}
 .badge{
   position:absolute; left:14px; bottom:14px;
   background:var(--badge); color:#fff; font-size:.8rem; font-weight:600;
@@ -111,11 +108,12 @@ h1{font-size:1.95rem;margin:0 0 .9rem;color:var(--accent)}
 }
 
 /* Body */
-.body{padding:16px 18px}
+.body{padding:18px 20px;display:flex;flex-direction:column;justify-content:center}
 .title{margin:0 0 .4rem; font-size:1.25rem}
 .meta{display:flex; gap:14px; color:var(--muted); font-size:.92rem; align-items:center}
 .meta i{opacity:.9}
 .cta{
+  align-self:flex-start;
   display:inline-flex; gap:.55rem; align-items:center; margin-top:12px; font-weight:800;
   text-decoration:none; color:#0b1020; border-radius:14px; padding:.6rem .9rem;
   background:linear-gradient(135deg,var(--accent),var(--accent2));
@@ -131,6 +129,12 @@ footer{
 }
 .footer-wrap{max-width:1100px;margin:auto;padding:1rem}
 .footer-wrap small{font-weight:600}
+
+/* Responsive */
+@media (max-width: 740px){
+  .card{grid-template-columns: 1fr;}
+  .thumb{height:200px}
+}
 
 /* Motion */
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
@@ -173,11 +177,20 @@ footer{
   <h1>Explore my writing</h1>
 
   <section class="stack">
-    <!-- Card 1 — Cancer Biology Series (uses your own image file) -->
+    <!-- Card 1 — Cancer Biology Series (horizontal) -->
     <article class="card">
       <div class="thumb">
-        <!-- Put your image in /assets/cancer-card.jpg or change the path below -->
-        <img src="assets/cancer_card.jpg" alt="Cancer Biology visual" onerror="this.style.display='none'">
+        <picture>
+          <!-- Try both common folder/name styles to avoid 404s on GitHub Pages -->
+          <source srcset="assets/cancer_card.jpg">
+          <source srcset="assets/cancer_card.jpg">
+          <img
+            src="assets/cancer_card.jpg"
+            alt="Cancer Biology visual"
+            loading="lazy"
+            onerror="this.outerHTML=`<img src='data:image/svg+xml;utf8,<?xml version=&quot;1.0&quot;?><svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;1200&quot; height=&quot;600&quot;><rect width=&quot;100%&quot; height=&quot;100%&quot; fill=&quot;#d9c6f7&quot;/><text x=&quot;50%&quot; y=&quot;50%&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot; font-family=&quot;Inter, Arial&quot; font-size=&quot;28&quot; fill=&quot;#6B46C1&quot;>Image not found • cancer-card.jpg</text></svg>` alt='placeholder'>`"
+          >
+        </picture>
         <span class="badge"><i class="fa-solid fa-flask"></i> Cancer Biology</span>
       </div>
       <div class="body">
@@ -189,10 +202,19 @@ footer{
       </div>
     </article>
 
-    <!-- Card 2 — Debate -->
+    <!-- Card 2 — Debate (horizontal) -->
     <article class="card">
       <div class="thumb">
-        <img src="assets/debate-card.jpg" alt="Debate and notes" onerror="this.style.display='none'">
+        <picture>
+          <source srcset="assets/debate_card.jpg">
+          <source srcset="assets/debate_card.jpg">
+          <img
+            src="assets/debate_card.jpg"
+            alt="Debate and notes"
+            loading="lazy"
+            onerror="this.outerHTML=`<img src='data:image/svg+xml;utf8,<?xml version=&quot;1.0&quot;?><svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;1200&quot; height=&quot;600&quot;><rect width=&quot;100%&quot; height=&quot;100%&quot; fill=&quot;#d9c6f7&quot;/><text x=&quot;50%&quot; y=&quot;50%&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot; font-family=&quot;Inter, Arial&quot; font-size=&quot;28&quot; fill=&quot;#6B46C1&quot;>Image not found • debate-card.jpg</text></svg>` alt='placeholder'>`"
+          >
+        </picture>
         <span class="badge"><i class="fa-solid fa-microphone-lines"></i> Debate &amp; Notes</span>
       </div>
       <div class="body">
@@ -236,16 +258,8 @@ const scrim   = document.getElementById('scrim');
 const menuBtn = document.getElementById('menuBtn');
 const closeBtn= document.getElementById('closeBtn');
 
-function openDrawer(){
-  drawer.classList.add('open');
-  scrim.classList.add('show');
-  drawer.setAttribute('aria-hidden','false');
-}
-function closeDrawer(){
-  drawer.classList.remove('open');
-  scrim.classList.remove('show');
-  drawer.setAttribute('aria-hidden','true');
-}
+function openDrawer(){ drawer.classList.add('open'); scrim.classList.add('show'); drawer.setAttribute('aria-hidden','false'); }
+function closeDrawer(){ drawer.classList.remove('open'); scrim.classList.remove('show'); drawer.setAttribute('aria-hidden','true'); }
 menuBtn.addEventListener('click', openDrawer);
 closeBtn.addEventListener('click', closeDrawer);
 scrim.addEventListener('click', closeDrawer);
